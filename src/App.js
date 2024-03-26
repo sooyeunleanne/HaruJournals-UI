@@ -5,10 +5,6 @@ import './App.css';
 
 function App() {
   const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
   
   const [journalEntries, setJournalEntries] = useState({});
 
