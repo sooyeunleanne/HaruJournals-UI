@@ -1,7 +1,7 @@
 import {useState} from 'react'; 
 import './App.css';
-import CalendarPage from './pages/CalendarPage';
-import Pet from './components/PetButton/Pet';
+import CalendarPage from './UI/pages/CalendarPage';
+import Pet from './UI/pages/PetPage/Pet';
 
 function App() {
   return (

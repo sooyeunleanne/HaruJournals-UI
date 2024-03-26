@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react'; 
 import Calendar from 'react-calendar';
 import './CalendarPage.css';
-import {JournalEntryForm} from '../../components/JournalEntryForm/JournalEntryForm';
+import {JournalEntryForm} from '../../JournalEntryForm/JournalEntryForm';
 
 function CalendarPage () {
 
