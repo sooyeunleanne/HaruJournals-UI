@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import './JournalEntryForm.css';
 
 export const JournalEntryForm = ({ selectedDate, onSave, entry }) => {
 
@@ -15,14 +16,16 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry }) => {
   };
 
   return (
-    <div>
-      <h2>{selectedDate.toLocaleDateString()}</h2>
-      <textarea
+    <div className='journal-container'>
+      <div>
+        <h1>{selectedDate.toLocaleDateString()}</h1> <button className='save-button' onClick={handleSave}>Save</button>
+      </div>
+      <textarea type="text"
         value={journalEntry}
         onChange={(e) => setJournalEntry(e.target.value)}
         placeholder="Write your journal entry..."
       />
-      <button onClick={handleSave}>Save</button>
+
     </div>
   );
 };

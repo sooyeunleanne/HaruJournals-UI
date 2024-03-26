@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import styles from './Pet.module.css';
+import './Pet.css';
 
 function Pet() {
     const [openPet, setOpenPet] = useState(false);
@@ -14,7 +14,7 @@ function Pet() {
 
     return (
         <div>
-            <button className={styles.petOpenButton} onClick={onPetClick}>🐈</button>
+            <button className='pet-open-button' onClick={onPetClick}>🐈</button>
             {openPet && <PetComponent onCloseClick={onCloseClick} />}
         </div>
     );
@@ -22,8 +22,8 @@ function Pet() {
 
 function PetComponent({ onCloseClick }) {
     return (
-        <div className={styles.petContainer}>
-            <button onClick={onCloseClick}> X </button>
+        <div className='pet-container'>
+            <button className='pet-close-button' onClick={onCloseClick}> X </button>
             <div>Put the growing cat here!</div>
         </div>
     );

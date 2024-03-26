@@ -1,7 +1,8 @@
 import React from 'react';
 import {useState} from 'react'; 
 import Calendar from 'react-calendar';
-import {JournalEntryForm} from '../../components/JournalEntryForm';
+import './CalendarPage.css';
+import {JournalEntryForm} from '../../components/JournalEntryForm/JournalEntryForm';
 
 function CalendarPage () {
 
@@ -17,8 +18,7 @@ function CalendarPage () {
 	};
   
 	return (
-	  <div>
-		<h1>Selected Date: {selectedDate.toDateString()}</h1>
+	  <div className='calendar-container'>
 		<Calendar onChange={setSelectedDate}
 		  value={selectedDate} />
   

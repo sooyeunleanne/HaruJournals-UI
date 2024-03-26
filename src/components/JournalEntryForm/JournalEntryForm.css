@@ -1,0 +1,41 @@
+
+h1 {
+    text-align: center;
+}
+
+.save-button {
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 3rem;
+    border-width: 0;
+    background-color: #F2A6B9;
+    float: right;
+    margin-bottom: 1rem;
+    font-family: "Single Day", cursive;
+    font-size: 1.25rem;
+}
+
+.save-button:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+textarea {
+    height: 15rem;
+    border-radius: 3rem;
+    padding: 2rem;
+    width: 100%;
+    border-width: 0;
+    overflow-y: scroll;
+    vertical-align: top;
+    overflow-wrap: break-word; /* Wrap the text at the end of the input field */
+    resize: none;
+    font-family: "Single Day", cursive;
+    font-size: 1.5rem;
+}
+
+.journal-container {
+    margin: 2rem;
+    padding-top: 5rem;
+    width: 45%;
+}
