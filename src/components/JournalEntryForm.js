@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export const JournalEntryForm = ({ selectedDate, onSave, entry }) => {
+
   const [journalEntry, setJournalEntry] = useState('');
 
   useEffect(() => {
@@ -23,4 +25,10 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry }) => {
       <button onClick={handleSave}>Save</button>
     </div>
   );
+};
+
+JournalEntryForm.propTypes = {
+  selectedDate: PropTypes.instanceOf(Date).isRequired,
+  onSave: PropTypes.func.isRequired,
+  entry: PropTypes.string,
 };
