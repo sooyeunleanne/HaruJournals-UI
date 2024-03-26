@@ -1,38 +1,50 @@
 import {useState} from 'react'; 
 import Calendar from 'react-calendar';
-import {InputForm} from './components/Input';
+import {JournalEntryForm} from './components/JournalEntryForm';
 import './App.css';
 
 function App() {
-  if (localStorage.getItem("journal") == null) {
-    localStorage.setItem("journal", "");
-  }
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const [date, setDate] = useState(new Date());
-  // const [journal, setJournal] = useState(JSON.parse(localStorage.getItem("journal")));
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+  
+  const [journalEntries, setJournalEntries] = useState({});
 
-  // const updateJournal = eachEntry => {
-  //   setJournal([...journal, eachEntry]);
-  //   localStorage.setItem("journal", JSON.stringify([...journal, eachEntry]))
-  // };
+  const handleSaveEntry = (date, entry) => {
+    setJournalEntries({
+      ...journalEntries,
+      [date.toDateString()]: entry, //store entry based on date string
+    });
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
+    <div>
+      <h1>Selected Date: {selectedDate.toDateString()}</h1>
+      <Calendar onChange={setSelectedDate}
+        value={selectedDate} />
 
-      <div className="main">
-        <div className="calendar-container"> 
-          <Calendar onChange={setDate} value={date} />
-        </div>
-        <div>
-          {date.toDateString()}
-        </div>
-        {/* <InputForm updateJournal={updateJournal} /> */}
-        {/* https://stackoverflow.com/questions/65617851/in-reactjs-how-to-store-data-as-json-while-clicking-submit-button */}
-      </div>
+      <JournalEntryForm
+          selectedDate={selectedDate}
+          onSave={handleSaveEntry}
+          entry={journalEntries[selectedDate.toDateString()]} // Pass entry for selected date
+        />
+
+      {/* <div>uncomment to see how journal entries are saved ~</div> */}
+      {/* <div>
+        <h2>Saved Journal Entries</h2>
+        <ul>
+          {Object.entries(journalEntries).map(([date, entry]) => (
+            <li key={date}>
+              <strong>{date}</strong>: {entry}
+            </li>
+          ))}
+        </ul>
+      </div> */} 
     </div>
   );
 }
 
 export default App;
+
