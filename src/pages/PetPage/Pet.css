@@ -1,0 +1,17 @@
+.pet-open-button {
+    position: absolute;
+    right: 5rem;
+    bottom: 5rem;
+    height: 5rem;
+    width: 5rem;
+    font-size: large;
+    border-radius: 5rem;
+    background-color: #F2A6B9;
+    border-width: 0;
+}
+
+
+.pet-open-button:hover {
+    background-color: white;
+    cursor: pointer;
+}

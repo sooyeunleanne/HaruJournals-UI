@@ -21,13 +21,13 @@ h1 {
     cursor: pointer;
 }
 
-textarea {
+.journal-textarea {
     height: 15rem;
     border-radius: 3rem;
     padding: 2rem;
     width: 100%;
     border-width: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     vertical-align: top;
     overflow-wrap: break-word; /* Wrap the text at the end of the input field */
     resize: none;

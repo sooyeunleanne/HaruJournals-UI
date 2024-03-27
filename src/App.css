@@ -1,3 +1,4 @@
+/* global css styles! */
 @import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
 
 body {
@@ -9,4 +10,37 @@ body {
   font-family: "Single Day", cursive;
   font-weight: 400;
   font-style: normal;
+}
+
+.popup-container {
+  position: absolute;
+  height: 30rem;
+  width: 30rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  padding: 2rem;
+
+  text-align: center;
+  border-radius: 3rem;
+  background-color:  #FFCCCC;
+
+  border: 2px solid black;
+}
+
+.close-button {
+  float: right;
+  font-size: large;
+  background-color: transparent;
+  color: black;
+  border-width: 0;
+  font-family: "Single Day", cursive;
+
+}
+
+.close-button:hover {
+  color: white    ;
+  cursor: pointer;
 }

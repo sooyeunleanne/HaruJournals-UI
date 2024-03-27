@@ -22,8 +22,8 @@ function Pet() {
 
 function PetComponent({ onCloseClick }) {
     return (
-        <div className='pet-container'>
-            <button className='pet-close-button' onClick={onCloseClick}> X </button>
+        <div className='popup-container'>
+            <button className='close-button' onClick={onCloseClick}> X </button>
             <div>Put the growing cat here!</div>
         </div>
     );

@@ -15,12 +15,14 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry }) => {
     setJournalEntry('');
   };
 
+
   return (
     <div className='journal-container'>
       <div>
-        <h1>{selectedDate.toLocaleDateString()}</h1> <button className='save-button' onClick={handleSave}>Save</button>
+        <h1>{selectedDate.toLocaleDateString()}</h1> 
+        <button className='save-button' onClick={handleSave}>Save</button>
       </div>
-      <textarea type="text"
+      <textarea className='journal-textarea' type="text"
         value={journalEntry}
         onChange={(e) => setJournalEntry(e.target.value)}
         placeholder="Write your journal entry..."

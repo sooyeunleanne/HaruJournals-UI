@@ -1,8 +1,10 @@
-import React from 'react';
-import {useState} from 'react'; 
+import React, {useState} from 'react'; 
 import Calendar from 'react-calendar';
+import Pet from '../PetPage/Pet';
+import Header from '../../components/Header/Header';
+import {JournalEntryForm} from '../../components/JournalEntryForm/JournalEntryForm';
 import './CalendarPage.css';
-import {JournalEntryForm} from '../../JournalEntryForm/JournalEntryForm';
+
 
 function CalendarPage () {
 
@@ -18,28 +20,35 @@ function CalendarPage () {
 	};
   
 	return (
-	  <div className='calendar-container'>
-		<Calendar onChange={setSelectedDate}
-		  value={selectedDate} />
-  
-		<JournalEntryForm
-			selectedDate={selectedDate}
-			onSave={handleSaveEntry}
-			entry={journalEntries[selectedDate.toDateString()]} // Pass entry for selected date
-		  />
-  
-		{/* <div>uncomment to see how journal entries are saved ~</div> */}
-		{/* <div>
-		  <h2>Saved Journal Entries</h2>
-		  <ul>
-			{Object.entries(journalEntries).map(([date, entry]) => (
-			  <li key={date}>
-				<strong>{date}</strong>: {entry}
-			  </li>
-			))}
-		  </ul>
-		</div> */} 
+		<div>
+			<Header />
+
+			<div className='calendar-container'>
+			<Calendar onChange={setSelectedDate}
+			value={selectedDate} />
+	
+			<JournalEntryForm
+				selectedDate={selectedDate}
+				onSave={handleSaveEntry}
+				entry={journalEntries[selectedDate.toDateString()]} // Pass entry for selected date
+			/>
+
+			<Pet />
+	
+			{/* <div>uncomment to see how journal entries are saved ~</div> */}
+			{/* <div>
+			<h2>Saved Journal Entries</h2>
+			<ul>
+				{Object.entries(journalEntries).map(([date, entry]) => (
+				<li key={date}>
+					<strong>{date}</strong>: {entry}
+				</li>
+				))}
+			</ul>
+			</div> */} 
 	  </div>
+		</div>
+	  
 	);
 	}
 
