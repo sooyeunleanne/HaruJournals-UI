@@ -6,7 +6,6 @@ function Header() {
     return (
         <div className='header-container'>
             <Clock />
-            <LogIn />
         </div>
     )
 }

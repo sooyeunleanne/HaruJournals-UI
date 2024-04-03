@@ -5,8 +5,8 @@ import CalendarPage from './pages/CalendarPage';
 function App() {
   return (
     <div>
-      <LandingPage />
-      {/* <CalendarPage /> */}
+      {/* <LandingPage /> */}
+      <CalendarPage />
     </div>
   );
 }
