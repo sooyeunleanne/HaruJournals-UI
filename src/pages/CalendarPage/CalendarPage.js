@@ -1,10 +1,18 @@
 import React, {useState} from 'react'; 
-import Calendar from 'react-calendar';
+import { Calendar} from 'react-calendar';
 import Pet from '../PetPage/Pet';
 import Header from '../../components/Header/Header';
 import {JournalEntryForm} from '../../components/JournalEntryForm/JournalEntryForm';
 import './CalendarPage.css';
 
+function CalendarHeader() {
+	return (
+	  <div>
+		<h2>My Calendar Header</h2>
+		{/* You can add any other header content here */}
+	  </div>
+	);
+  }
 
 function CalendarPage () {
 
@@ -21,17 +29,19 @@ function CalendarPage () {
   
 	return (
 		<div>
-			<Header />
+			{/* <Header /> */}
 
 			<div className='calendar-container'>
-			<Calendar onChange={setSelectedDate}
-			value={selectedDate} />
-	
-			<JournalEntryForm
-				selectedDate={selectedDate}
-				onSave={handleSaveEntry}
-				entry={journalEntries[selectedDate.toDateString()]} // Pass entry for selected date
-			/>
+				<Calendar onChange={setSelectedDate}
+				value={selectedDate} 
+				/>
+		
+				<JournalEntryForm
+					selectedDate={selectedDate}
+					onSave={handleSaveEntry}
+					entry={journalEntries[selectedDate.toDateString()]} // Pass entry for selected date
+				/>
+			</div>
 
 			<Pet />
 	
@@ -47,7 +57,6 @@ function CalendarPage () {
 			</ul>
 			</div> */} 
 	  </div>
-		</div>
 	  
 	);
 	}
