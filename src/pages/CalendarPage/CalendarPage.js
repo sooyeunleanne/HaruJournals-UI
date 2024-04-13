@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Calendar } from 'react-calendar';
-import Pet from '../PetPage/Pet';
-import Header from '../../components/Header/Header';
+import { Header } from '../../components/Header/Header';
 import { JournalEntryForm } from '../../components/JournalEntryForm/JournalEntryForm';
 import './CalendarPage.css';
 
@@ -38,15 +37,14 @@ function CalendarPage() {
   };
 
   return (
-    <div>
-      {/* <Header /> */}
-
-      <div className='calendar-container'>
-        <Calendar
-          onChange={setSelectedDate}
-          value={selectedDate}
-          tileContent={dayTileContent}
-        />
+    <div>	  
+		<Header />
+      <div className='page-container'>
+		<Calendar
+			onChange={setSelectedDate}
+			value={selectedDate}
+			tileContent={dayTileContent}
+			/>
 
         <JournalEntryForm
           selectedDate={selectedDate}
@@ -55,8 +53,6 @@ function CalendarPage() {
 		  mood={journalEntries[selectedDate.toDateString()]?.mood}
         />
       </div>
-
-      {/* <Pet /> */}
 
 	  {/* <div>uncomment to see how journal entries are saved ~</div> */}
 			{/* <div>

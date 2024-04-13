@@ -1,17 +1,21 @@
 /* todo: delete file if not needed */
-  .calendar-container {
+.page-container {
     display: flex;
+  }
+
+  .calendar-container {
+    display: block;
   }
 
   .react-calendar {
     border-radius: 3rem;
     width: 45%;
+    margin: 2.5%;
     height: calc(width);
     background: #D9D9D9;
     color: black;
     font-size: 2rem;
     padding: 2rem;
-    margin: 2.5%;
     line-height: 50px;
     text-decoration: none;
   }

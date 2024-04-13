@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './JournalEntryForm.css'
+import './JournalEntryForm.css';
 
 function MoodOptionsComponent({ setMood, moodInEntry }) {
   const [selectedMood, setSelectedMood] = useState(null);

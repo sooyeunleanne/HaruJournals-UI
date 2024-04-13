@@ -1,11 +1,14 @@
 import React from 'react';
 import Clock from '../Clock/Clock';
 import LogIn from '../../pages/LogIn/LogIn';
+import MoodStatistics from '../../pages/MoodStatistics/MoodStatistics';
+import './Header.css';
 
-function Header() {
+export function Header() {
     return (
         <div className='header-container'>
-            <Clock />
+            <MoodStatistics />
+            {/* <Clock /> */}
         </div>
     )
 }
