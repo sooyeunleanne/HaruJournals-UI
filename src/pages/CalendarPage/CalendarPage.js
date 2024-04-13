@@ -52,13 +52,14 @@ function CalendarPage() {
           selectedDate={selectedDate}
           onSave={handleSaveEntry}
           entry={journalEntries[selectedDate.toDateString()]?.entry} // Pass entry for selected date
+		  mood={journalEntries[selectedDate.toDateString()]?.mood}
         />
       </div>
 
       {/* <Pet /> */}
 
 	  {/* <div>uncomment to see how journal entries are saved ~</div> */}
-			{/* <div>
+			<div>
 			<h2>Saved Journal Entries</h2>
 			<ul>
 			{Object.entries(journalEntries).map(([date, entry]) => (
@@ -68,7 +69,7 @@ function CalendarPage() {
 			))}
 
 			</ul>
-			</div> */}
+			</div>
     </div>
   );
 }

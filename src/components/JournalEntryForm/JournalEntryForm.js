@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './JournalEntryForm.css'
 
-function MoodOptionsComponent({ onCloseClick, setMood }) {
+function MoodOptionsComponent({ setMood, moodInEntry }) {
   const [selectedMood, setSelectedMood] = useState(null);
+
+  useEffect(() => {
+    setSelectedMood(moodInEntry); // Set the initial value of the textarea
+  }, [moodInEntry]);
 
   const handleMoodClick = (mood) => {
     setMood(mood);
@@ -22,16 +26,17 @@ function MoodOptionsComponent({ onCloseClick, setMood }) {
   );
 }
 
-export const JournalEntryForm = ({ selectedDate, onSave, entry }) => {
-  const [mood, setMood] = useState('');
+export const JournalEntryForm = ({ selectedDate, onSave, entry, mood }) => {
+  const [journalMood, setMood] = useState('');
   const [journalEntry, setJournalEntry] = useState('');
 
   useEffect(() => {
     setJournalEntry(entry || ''); // Set the initial value of the textarea
-  }, [entry]);
+    setMood(mood || ''); // Set the initial value of the textarea
+  }, [entry, mood]);
 
   const handleSave = () => {
-    onSave(selectedDate, mood, journalEntry); // Pass mood to onSave function
+    onSave(selectedDate, journalMood, journalEntry); // Pass mood to onSave function
     setJournalEntry(entry);
     setMood(mood);
   };
@@ -43,7 +48,7 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry }) => {
         <h2>{selectedDate.getFullYear()}</h2>
         <h1>{new Intl.DateTimeFormat('en-US', { month: 'long' }).format(selectedDate).toUpperCase()}</h1> 
       </div>
-      <MoodOptionsComponent setMood={setMood} />
+      <MoodOptionsComponent setMood={setMood} moodInEntry={journalMood}/>
       <textarea className='journal-textarea' type="text"
         value={journalEntry}
         onChange={(e) => setJournalEntry(e.target.value)}
