@@ -1,9 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './JournalEntryForm.css';
+import './JournalEntryForm.css'
+
+function MoodOptionsComponent({ onCloseClick, setMood }) {
+  const [selectedMood, setSelectedMood] = useState(null);
+
+  const handleMoodClick = (mood) => {
+    setMood(mood);
+    setSelectedMood(mood); // Update the selected mood state
+  };
+
+  return (
+    <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+      <div className={`mood-button ${selectedMood === 'happy' && 'selected'}`} onClick={() => handleMoodClick('happy')}>😀</div>
+      <div className={`mood-button ${selectedMood === 'sad' && 'selected'}`} onClick={() => handleMoodClick('sad')}>🥲</div>
+      <div className={`mood-button ${selectedMood === 'angry' && 'selected'}`} onClick={() => handleMoodClick('angry')}>😡</div>
+      <div className={`mood-button ${selectedMood === 'tired' && 'selected'}`} onClick={() => handleMoodClick('tired')}>😩</div>
+      <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('loved')}>🥰</div>
+
+    </div>
+  );
+}
 
 export const JournalEntryForm = ({ selectedDate, onSave, entry }) => {
-
+  const [mood, setMood] = useState('');
   const [journalEntry, setJournalEntry] = useState('');
 
   useEffect(() => {
@@ -11,22 +31,24 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry }) => {
   }, [entry]);
 
   const handleSave = () => {
-    onSave(selectedDate, journalEntry);
-    setJournalEntry('');
+    onSave(selectedDate, mood, journalEntry); // Pass mood to onSave function
+    setJournalEntry(entry);
+    setMood(mood);
   };
 
 
   return (
     <div className='journal-container'>
-      <h1>{selectedDate.toDateString().toUpperCase()}</h1> 
+      <div className='heading-container'>
+        <h2>{selectedDate.getFullYear()}</h2>
+        <h1>{new Intl.DateTimeFormat('en-US', { month: 'long' }).format(selectedDate).toUpperCase()}</h1> 
+      </div>
+      <MoodOptionsComponent setMood={setMood} />
       <textarea className='journal-textarea' type="text"
         value={journalEntry}
         onChange={(e) => setJournalEntry(e.target.value)}
-        placeholder="Write your journal entry"
       />
       <button className='save-button' onClick={handleSave}>Save</button>
-
-
     </div>
   );
 };
