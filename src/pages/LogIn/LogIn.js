@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import './LogIn.css';
 
+import openscreen from '../../assets/openscreen.png';
+
 function LogIn() {
     const [openLogIn, setOpenLogIn] = useState(false);
 
@@ -26,11 +28,19 @@ function LogIn() {
 
     return (
         <div>
-            <button className='open-button' onClick={onLogInClick}>Log-in</button>
-            <button className='open-button' onClick={onSignUpClick}>Sign up</button>
+            <div className='button-container'>
+                <button className='open-button' onClick={onLogInClick}>Log-in</button>
+                <button className='open-button' onClick={onSignUpClick}>Sign up</button>
+            </div>
 
             {openLogIn && <LogInComponent onCloseClick={onCloseLogInClick} onSignUpClick={onSignUpClick}/>}
             {openSignUp && <SignUpComponent onCloseClick={onCloseSignUpClick} onLogInClick={onLogInClick}/>}
+
+            <div className='open-screen'>
+                <h1>Welcome to everyday journals!</h1>
+                <img style={{width: '80%', height: 'auto'}} src={openscreen}></img>
+            </div>
+            
         </div>
     );
 }
