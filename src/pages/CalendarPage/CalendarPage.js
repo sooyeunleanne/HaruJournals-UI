@@ -4,6 +4,14 @@ import { Header } from '../../components/Header/Header';
 import { JournalEntryForm } from '../../components/JournalEntryForm/JournalEntryForm';
 import './CalendarPage.css';
 
+import happyicon from '../../assets/emotion-icons/happy.png';
+import excitedicon from '../../assets/emotion-icons/excited.png';
+import neutralicon from '../../assets/emotion-icons/neutral.png';
+import concernedicon from '../../assets/emotion-icons/concerned.png';
+import lovedicon from '../../assets/emotion-icons/loved.png';
+import tiredicon from '../../assets/emotion-icons/tired.png';
+import sadicon from '../../assets/emotion-icons/sad.png';
+
 function CalendarPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [journalEntries, setJournalEntries] = useState({});
@@ -18,19 +26,25 @@ function CalendarPage() {
   const dayTileContent = ({ date }) => {
     const entry = journalEntries[date.toDateString()];
     if (entry && entry.mood === 'happy') {
-      return <div>😀</div>;
+      return <div><img src={happyicon}></img></div>;
     }
 	else if (entry && entry.mood === 'sad') {
-		return <div>🥲</div>;
+		return <div><img src={sadicon}></img></div>;
 	}
-	else if (entry && entry.mood === 'angry') {
-		return <div>😡</div>;
+	else if (entry && entry.mood === 'excited') {
+		return <div><img src={excitedicon}></img></div>;
 	}
 	else if (entry && entry.mood === 'tired') {
-		return <div>😩</div>;
+		return <div><img src={tiredicon}></img></div>;
 	}
 	else if (entry && entry.mood === 'loved') {
-		return <div>🥰</div>;
+		return <div><img src={lovedicon}></img></div>;
+	}
+	else if (entry && entry.mood === 'neutral') {
+		return <div><img src={neutralicon}></img></div>;
+	}
+	else if (entry && entry.mood === 'concerned') {
+		return <div><img src={concernedicon}></img></div>;
 	}
 
     return null;

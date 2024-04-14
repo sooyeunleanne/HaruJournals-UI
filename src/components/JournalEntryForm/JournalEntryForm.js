@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './JournalEntryForm.css';
 
+import happyicon from '../../assets/emotion-icons/happy.png';
+import excitedicon from '../../assets/emotion-icons/excited.png';
+import neutralicon from '../../assets/emotion-icons/neutral.png';
+import concernedicon from '../../assets/emotion-icons/concerned.png';
+import lovedicon from '../../assets/emotion-icons/loved.png';
+import tiredicon from '../../assets/emotion-icons/tired.png';
+import sadicon from '../../assets/emotion-icons/sad.png';
+
 function MoodOptionsComponent({ setMood, moodInEntry }) {
   const [selectedMood, setSelectedMood] = useState(null);
 
@@ -16,11 +24,14 @@ function MoodOptionsComponent({ setMood, moodInEntry }) {
 
   return (
     <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-      <div className={`mood-button ${selectedMood === 'happy' && 'selected'}`} onClick={() => handleMoodClick('happy')}>😀</div>
-      <div className={`mood-button ${selectedMood === 'sad' && 'selected'}`} onClick={() => handleMoodClick('sad')}>🥲</div>
-      <div className={`mood-button ${selectedMood === 'angry' && 'selected'}`} onClick={() => handleMoodClick('angry')}>😡</div>
-      <div className={`mood-button ${selectedMood === 'tired' && 'selected'}`} onClick={() => handleMoodClick('tired')}>😩</div>
-      <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('loved')}>🥰</div>
+      <div className={`mood-button ${selectedMood === 'happy' && 'selected'}`} onClick={() => handleMoodClick('happy')}><img src={happyicon}></img></div>
+      <div className={`mood-button ${selectedMood === 'sad' && 'selected'}`} onClick={() => handleMoodClick('sad')}><img src={sadicon}></img></div>
+      <div className={`mood-button ${selectedMood === 'angry' && 'selected'}`} onClick={() => handleMoodClick('excited')}><img src={excitedicon}></img></div>
+      <div className={`mood-button ${selectedMood === 'tired' && 'selected'}`} onClick={() => handleMoodClick('tired')}><img src={tiredicon}></img></div>
+      <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('loved')}><img src={lovedicon}></img></div>
+      <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('neutral')}><img src={neutralicon}></img></div>
+      <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('concerned')}><img src={concernedicon}></img></div>
+
 
     </div>
   );
