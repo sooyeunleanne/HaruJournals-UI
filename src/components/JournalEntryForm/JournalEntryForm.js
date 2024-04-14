@@ -31,15 +31,18 @@ function MoodOptionsComponent({ setMood, moodInEntry }) {
       <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('loved')}><img src={lovedicon}></img></div>
       <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('neutral')}><img src={neutralicon}></img></div>
       <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('concerned')}><img src={concernedicon}></img></div>
-
-
     </div>
   );
 }
 
 export const JournalEntryForm = ({ selectedDate, onSave, entry, mood }) => {
+  //handling the entries
   const [journalMood, setMood] = useState('');
   const [journalEntry, setJournalEntry] = useState('');
+
+  //handling the alerts
+  const [entryUnfilled, setEntryUnfilled] = useState(false);
+  const [moodUnfilled, setMoodUnfilled] = useState(false);
 
   useEffect(() => {
     setJournalEntry(entry || ''); // Set the initial value of the textarea
@@ -47,9 +50,22 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood }) => {
   }, [entry, mood]);
 
   const handleSave = () => {
-    onSave(selectedDate, journalMood, journalEntry); // Pass mood to onSave function
-    setJournalEntry(entry);
-    setMood(mood);
+    if (journalMood !== '' && journalEntry !== '') {
+      setEntryUnfilled(false);
+      setMoodUnfilled(false);
+
+      onSave(selectedDate, journalMood, journalEntry); // Pass mood to onSave function
+      setJournalEntry(entry);
+      setMood(mood);
+    }
+    else {
+      if (journalMood === '') {
+        setMoodUnfilled(true);
+      }
+      if (journalEntry === '') {
+        setEntryUnfilled(true);
+      }
+    }
   };
 
 
@@ -59,7 +75,13 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood }) => {
         <h2>{selectedDate.getFullYear()}</h2>
         <h1>{new Intl.DateTimeFormat('en-US', { month: 'long' }).format(selectedDate).toUpperCase()}</h1> 
       </div>
+      <p className={(moodUnfilled && journalMood === '') ? 'alert' : 'initial'}> 
+      {(moodUnfilled && journalMood === '') && <span className='alert'>Missing! </span>}
+      Pick your mood:</p>
       <MoodOptionsComponent setMood={setMood} moodInEntry={journalMood}/>
+      <p className={(entryUnfilled && journalEntry === '') ? 'alert' : 'initial'}>
+      {(entryUnfilled && journalEntry === '') && <span className='alert'>Missing! </span>}
+      Journal your day:</p> 
       <textarea className='journal-textarea' type="text"
         value={journalEntry}
         onChange={(e) => setJournalEntry(e.target.value)}
@@ -73,4 +95,5 @@ JournalEntryForm.propTypes = {
   selectedDate: PropTypes.instanceOf(Date).isRequired,
   onSave: PropTypes.func.isRequired,
   entry: PropTypes.string,
+  mood: PropTypes.string
 };
