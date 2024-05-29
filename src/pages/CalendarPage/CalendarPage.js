@@ -16,10 +16,10 @@ function CalendarPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [journalEntries, setJournalEntries] = useState({});
 
-  const handleSaveEntry = useCallback((date, mood, entry) => {
+  const handleSaveEntry = useCallback((date, mood, entry, imageFile) => {
 	setJournalEntries(prevEntries => ({
 	  ...prevEntries,
-	  [date.toDateString()]: { mood, entry }, // Store mood and entry based on date string
+	  [date.toDateString()]: { mood, entry, imageFile }, // Store mood and entry based on date string
 	}));
   }, []);
   
@@ -65,6 +65,7 @@ function CalendarPage() {
           onSave={handleSaveEntry}
           entry={journalEntries[selectedDate.toDateString()]?.entry} // Pass entry for selected date
 		  mood={journalEntries[selectedDate.toDateString()]?.mood}
+		  imageFile={journalEntries[selectedDate.toDateString()]?.imageFile}
         />
       </div>
 

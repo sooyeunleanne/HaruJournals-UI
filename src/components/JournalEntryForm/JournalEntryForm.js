@@ -35,10 +35,11 @@ function MoodOptionsComponent({ setMood, moodInEntry }) {
   );
 }
 
-export const JournalEntryForm = ({ selectedDate, onSave, entry, mood }) => {
+export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile }) => {
   //handling the entries
   const [journalMood, setMood] = useState('');
   const [journalEntry, setJournalEntry] = useState('');
+  const [journalImage, setJournalImage] = useState(null);
 
   //handling the alerts
   const [entryUnfilled, setEntryUnfilled] = useState(false);
@@ -47,16 +48,22 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood }) => {
   useEffect(() => {
     setJournalEntry(entry || ''); // Set the initial value of the textarea
     setMood(mood || ''); // Set the initial value of the textarea
-  }, [entry, mood]);
+    setJournalImage(imageFile || null);
+  }, [entry, mood, imageFile]);
+
+  function handleImageUpload(e) {
+    setJournalImage(URL.createObjectURL(e.target.files[0]));
+  }
 
   const handleSave = () => {
     if (journalMood !== '' && journalEntry !== '') {
       setEntryUnfilled(false);
       setMoodUnfilled(false);
 
-      onSave(selectedDate, journalMood, journalEntry); // Pass mood to onSave function
+      onSave(selectedDate, journalMood, journalEntry, journalImage); // Pass mood to onSave function
       setJournalEntry(entry);
       setMood(mood);
+      setJournalImage(imageFile);
     }
     else {
       if (journalMood === '') {
@@ -75,10 +82,19 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood }) => {
         <h2>{selectedDate.getFullYear()}</h2>
         <h1>{new Intl.DateTimeFormat('en-US', { month: 'long' }).format(selectedDate).toUpperCase()}</h1> 
       </div>
+
       <p className={(moodUnfilled && journalMood === '') ? 'alert' : 'initial'}> 
       {(moodUnfilled && journalMood === '') && <span className='alert'>Missing! </span>}
       Pick your mood:</p>
       <MoodOptionsComponent setMood={setMood} moodInEntry={journalMood}/>
+
+      <div>
+        <p>Add image (optional):</p>
+        <img className='uploaded-photo' src={journalImage}/>
+        <br/>
+        <input type='file' onChange={handleImageUpload}/>
+      </div>
+
       <p className={(entryUnfilled && journalEntry === '') ? 'alert' : 'initial'}>
       {(entryUnfilled && journalEntry === '') && <span className='alert'>Missing! </span>}
       Journal your day:</p> 

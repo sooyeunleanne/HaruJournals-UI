@@ -37,7 +37,7 @@ function LogIn() {
             {openSignUp && <SignUpComponent onCloseClick={onCloseSignUpClick} onLogInClick={onLogInClick}/>}
 
             <div className='open-screen'>
-                <h1>Welcome to everyday journals!</h1>
+                <h1>Welcome to Everyday Journals</h1>
                 <img style={{width: '80%', height: 'auto'}} src={openscreen}></img>
             </div>
             

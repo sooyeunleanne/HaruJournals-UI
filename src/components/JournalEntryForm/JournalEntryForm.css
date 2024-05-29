@@ -39,3 +39,11 @@
 .alert {
     color: #DD0000;
 }
+
+.uploaded-photo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10rem;
+    height: auto;
+}
