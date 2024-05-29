@@ -35,12 +35,12 @@ function MoodOptionsComponent({ setMood, moodInEntry }) {
   );
 }
 
-export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile }) => {
+export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile, musicLink }) => {
   //handling the entries
   const [journalMood, setMood] = useState('');
   const [journalEntry, setJournalEntry] = useState('');
   const [journalImage, setJournalImage] = useState(null);
-  const [musicLink, setMusicLink] = useState('');
+  const [journalMusicLink, setJournalMusicLink] = useState('');
 
   //handling the alerts
   const [entryUnfilled, setEntryUnfilled] = useState(false);
@@ -50,7 +50,8 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile 
     setJournalEntry(entry || ''); // Set the initial value of the textarea
     setMood(mood || ''); // Set the initial value of the textarea
     setJournalImage(imageFile || null);
-  }, [entry, mood, imageFile]);
+    setJournalMusicLink(musicLink || '');
+  }, [entry, mood, imageFile, musicLink]);
 
   function handleImageUpload(e) {
     setJournalImage(URL.createObjectURL(e.target.files[0]));
@@ -76,10 +77,11 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile 
       setEntryUnfilled(false);
       setMoodUnfilled(false);
 
-      onSave(selectedDate, journalMood, journalEntry, journalImage); // Pass mood to onSave function
+      onSave(selectedDate, journalMood, journalEntry, journalImage, journalMusicLink); // Pass mood to onSave function
       setJournalEntry(entry);
       setMood(mood);
       setJournalImage(imageFile);
+      setJournalMusicLink(musicLink);
     }
     else {
       if (journalMood === '') {
@@ -114,10 +116,10 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile 
       <div>
         <p>Add your song for the day:</p>
         <textarea type="text"
-        value={musicLink}
-        onChange={(e) => setMusicLink(e.target.value)}
+        value={journalMusicLink}
+        onChange={(e) => setJournalMusicLink(convertSpotifyUrl(e.target.value))}
       />
-        <iframe src={convertSpotifyUrl(musicLink)} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe src={journalMusicLink} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
 
       <p className={(entryUnfilled && journalEntry === '') ? 'alert' : 'initial'}>
