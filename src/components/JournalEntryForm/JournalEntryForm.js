@@ -40,6 +40,7 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile 
   const [journalMood, setMood] = useState('');
   const [journalEntry, setJournalEntry] = useState('');
   const [journalImage, setJournalImage] = useState(null);
+  const [musicLink, setMusicLink] = useState('');
 
   //handling the alerts
   const [entryUnfilled, setEntryUnfilled] = useState(false);
@@ -53,6 +54,21 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile 
 
   function handleImageUpload(e) {
     setJournalImage(URL.createObjectURL(e.target.files[0]));
+  }
+
+  function convertSpotifyUrl(url) {
+    // Define the base URL for embedding
+    const embedBaseUrl = "https://open.spotify.com/embed/track/";
+    const queryParams = "?utm_source=generator&theme=0";
+    
+    // Extract the track ID from the original URL
+    const urlParts = url.split('/');
+    const trackId = urlParts[urlParts.length - 1];
+    
+    // Construct the new embeddable URL
+    const embedUrl = `${embedBaseUrl}${trackId}${queryParams}`;
+    
+    return embedUrl;
   }
 
   const handleSave = () => {
@@ -93,6 +109,15 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile 
         <img className='uploaded-photo' src={journalImage}/>
         <br/>
         <input type='file' onChange={handleImageUpload}/>
+      </div>
+
+      <div>
+        <p>Add your song for the day:</p>
+        <textarea type="text"
+        value={musicLink}
+        onChange={(e) => setMusicLink(e.target.value)}
+      />
+        <iframe src={convertSpotifyUrl(musicLink)} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
 
       <p className={(entryUnfilled && journalEntry === '') ? 'alert' : 'initial'}>
