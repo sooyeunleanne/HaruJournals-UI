@@ -1,9 +1,11 @@
 /* global css styles! */
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
 
 body {
-  font-family: "Karla", sans-serif;
-  background-color: white;
+  font-family: "Newsreader", serif;
+  color: white;
+  background-color: #121933;
 }
 
 .karla {
