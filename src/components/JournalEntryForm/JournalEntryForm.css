@@ -2,25 +2,11 @@
     width: 100%;
     text-align: center;
 } 
-
-.mood-button {
-    height: 3rem;
-    width: 3rem;
-}
-
-.mood-button:hover {
-    cursor: pointer;
-}
-
-.selected {
-    background-color: #757575;
-}
-
 .journal-textarea {
     height: 20rem;
     border-radius: 3rem;
     padding: 5%;
-    width: 90%;
+    width: 30rem;
     border-width: 0;
     overflow-y: auto;
     vertical-align: top;
@@ -32,8 +18,10 @@
 }
 
 .journal-container {
-    width: 45%;
-    padding: 2.5%;
+    display: block;
+    width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .alert {
@@ -46,4 +34,16 @@
     margin-right: auto;
     width: 10rem;
     height: auto;
+}
+
+.music-link-textarea {
+    height: 1rem;
+    background: none;
+    border: none;
+    line-height: 0.5rem;
+    width: 30rem;
+    color: white;
+    overflow-x: scroll;
+    vertical-align: middle;
+    resize: none;
 }

@@ -1,17 +1,19 @@
 /* todo: delete file if not needed */
 .page-container {
     display: flex;
+    flex-wrap: wrap;
   }
 
   .calendar-container {
     display: block;
-    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 37.5rem;
   }
 
   .react-calendar {
-    border-radius: 3rem;
+    display: block;
     margin: 2rem;
-    margin-left: 3rem;
     background: transparent;
     font-size: 2rem;
     color: white;
@@ -51,13 +53,13 @@
     color: white;
   }
   
-  .react-calendar__navigation button:disabled {
-    background-color: #f0f0f0;
-  }
+  /* .react-calendar__navigation button:disabled {
+  } */
   
   .react-calendar__navigation button:enabled:hover,
   .react-calendar__navigation button:enabled:focus {
-    background-color: #e6e6e6;
+    background: none;
+    color: darkgrey;
   }
   
   .react-calendar__month-view__weekdays {

@@ -2,13 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './JournalEntryForm.css';
 
-import happyicon from '../../assets/emotion-icons/happy.png';
-import excitedicon from '../../assets/emotion-icons/excited.png';
-import neutralicon from '../../assets/emotion-icons/neutral.png';
-import concernedicon from '../../assets/emotion-icons/concerned.png';
-import lovedicon from '../../assets/emotion-icons/loved.png';
-import tiredicon from '../../assets/emotion-icons/tired.png';
-import sadicon from '../../assets/emotion-icons/sad.png';
+import sprout from '../../assets/calendar-icons/sprout.png';
+import halfBloom from '../../assets/calendar-icons/half-bloom.png';
+import fullBloom from '../../assets/calendar-icons/full-bloom.png';
+import faded from '../../assets/calendar-icons/faded.png';
 
 function MoodOptionsComponent({ setMood, moodInEntry }) {
   const [selectedMood, setSelectedMood] = useState(null);
@@ -24,13 +21,10 @@ function MoodOptionsComponent({ setMood, moodInEntry }) {
 
   return (
     <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-      <div className={`mood-button ${selectedMood === 'happy' && 'selected'}`} onClick={() => handleMoodClick('happy')}><img src={happyicon}></img></div>
-      <div className={`mood-button ${selectedMood === 'sad' && 'selected'}`} onClick={() => handleMoodClick('sad')}><img src={sadicon}></img></div>
-      <div className={`mood-button ${selectedMood === 'angry' && 'selected'}`} onClick={() => handleMoodClick('excited')}><img src={excitedicon}></img></div>
-      <div className={`mood-button ${selectedMood === 'tired' && 'selected'}`} onClick={() => handleMoodClick('tired')}><img src={tiredicon}></img></div>
-      <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('loved')}><img src={lovedicon}></img></div>
-      <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('neutral')}><img src={neutralicon}></img></div>
-      <div className={`mood-button ${selectedMood === 'loved' && 'selected'}`} onClick={() => handleMoodClick('concerned')}><img src={concernedicon}></img></div>
+      <div className={`mood-button ${selectedMood === 'sprout' && 'selected'}`} onClick={() => handleMoodClick('sprout')}><img src={sprout}></img></div>
+      <div className={`mood-button ${selectedMood === 'halfBloom' && 'selected'}`} onClick={() => handleMoodClick('halfBloom')}><img src={halfBloom}></img></div>
+      <div className={`mood-button ${selectedMood === 'fullBloom' && 'selected'}`} onClick={() => handleMoodClick('fullBloom')}><img src={fullBloom}></img></div>
+      <div className={`mood-button ${selectedMood === 'faded' && 'selected'}`} onClick={() => handleMoodClick('faded')}><img src={faded}></img></div>
     </div>
   );
 }
@@ -65,10 +59,12 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
     // Extract the track ID from the original URL
     const urlParts = url.split('/');
     const trackId = urlParts[urlParts.length - 1];
-    
-    // Construct the new embeddable URL
+
     const embedUrl = `${embedBaseUrl}${trackId}${queryParams}`;
-    
+
+    // Construct the new embeddable URL
+    if (url === '') return '';
+
     return embedUrl;
   }
 
@@ -98,23 +94,16 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
     <div className='journal-container'>
       <p className={(moodUnfilled && journalMood === '') ? 'alert' : 'initial'}> 
       {(moodUnfilled && journalMood === '') && <span className='alert'>Missing! </span>}
-      Pick your mood:</p>
+      <b>Pick your mood:</b></p>
       <MoodOptionsComponent setMood={setMood} moodInEntry={journalMood}/>
 
-      <div>
-        <p>Add image (optional):</p>
-        <img className='uploaded-photo' src={journalImage}/>
-        <br/>
-        <input type='file' onChange={handleImageUpload}/>
-      </div>
-
-      <div>
-        <p>Add your song for the day:</p>
-        <textarea type="text"
+      <div style={{display: 'flex', flexWrap: 'wrap'}}>
+        <p>Add your song for the day: </p>
+        <textarea className='music-link-textarea' type="text"
         value={journalMusicLink}
         onChange={(e) => setJournalMusicLink(convertSpotifyUrl(e.target.value))}
-      />
-        <iframe src={journalMusicLink} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        />
+        {(journalMusicLink !== '') && <iframe src={journalMusicLink} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>}
       </div>
 
       <p className={(entryUnfilled && journalEntry === '') ? 'alert' : 'initial'}>
@@ -124,6 +113,11 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
         value={journalEntry}
         onChange={(e) => setJournalEntry(e.target.value)}
       />
+
+      <p>Add image (optional):</p>
+        <img className='uploaded-photo' src={journalImage}/>
+        <br/>
+        <input type='file' onChange={handleImageUpload}/>
       <button className='save-button' onClick={handleSave}>Save</button>
     </div>
   );
