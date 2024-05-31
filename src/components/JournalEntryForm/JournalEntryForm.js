@@ -96,11 +96,6 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
 
   return (
     <div className='journal-container'>
-      <div className='heading-container'>
-        <h2>{selectedDate.getFullYear()}</h2>
-        <h1>{new Intl.DateTimeFormat('en-US', { month: 'long' }).format(selectedDate).toUpperCase()}</h1> 
-      </div>
-
       <p className={(moodUnfilled && journalMood === '') ? 'alert' : 'initial'}> 
       {(moodUnfilled && journalMood === '') && <span className='alert'>Missing! </span>}
       Pick your mood:</p>

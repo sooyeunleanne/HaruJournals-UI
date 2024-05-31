@@ -54,11 +54,13 @@ function CalendarPage() {
     <div>	  
 		<Header />
       <div className='page-container'>
-		<Calendar
-			onChange={setSelectedDate}
-			value={selectedDate}
-			tileContent={dayTileContent}
-			/>
+		<div className='calendar-container'>
+			<Calendar
+				onChange={setSelectedDate}
+				value={selectedDate}
+				tileContent={dayTileContent}
+				/>
+		</div>
 
         <JournalEntryForm
           selectedDate={selectedDate}
