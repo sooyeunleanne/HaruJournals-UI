@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import './JournalEntryForm.css';
 
@@ -73,11 +74,31 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
       setEntryUnfilled(false);
       setMoodUnfilled(false);
 
-      onSave(selectedDate, journalMood, journalEntry, journalImage, journalMusicLink); // Pass mood to onSave function
+      const journal = {
+        date: selectedDate,
+        mood: journalMood,
+        entry: journalEntry,
+        image: journalImage,
+        musicLink: journalMusicLink
+      };
+
+      axios.post('http://localhost:8080/api/journals', journal)
+        .then(response => {
+          console.log('Journal saved:', response.data);
+        })
+        .catch(error => {
+          console.error('There was an error saving the journal!', error);
+        });
+
       setJournalEntry(entry);
       setMood(mood);
       setJournalImage(imageFile);
       setJournalMusicLink(musicLink);
+
+      // setJournalEntry('');
+      // setMood('');
+      // setJournalImage(null);
+      // setJournalMusicLink('');
     }
     else {
       if (journalMood === '') {

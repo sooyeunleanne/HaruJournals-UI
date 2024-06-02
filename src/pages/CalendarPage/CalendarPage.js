@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
 import { Calendar } from 'react-calendar';
 import { Header } from '../../components/Header/Header';
 import { JournalEntryForm } from '../../components/JournalEntryForm/JournalEntryForm';
@@ -14,30 +15,43 @@ function CalendarPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [journalEntries, setJournalEntries] = useState({});
 
-  const handleSaveEntry = useCallback((date, mood, entry, imageFile, musicLink) => {
-	setJournalEntries(prevEntries => ({
-	  ...prevEntries,
-	  [date.toDateString()]: { mood, entry, imageFile, musicLink }, // Store mood and entry based on date string
-	}));
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/journals')
+      .then(response => {
+        const entries = response.data.reduce((acc, entry) => {
+          const date = new Date(entry.date).toISOString().split('T')[0];
+          acc[date] = { mood: entry.mood, entry: entry.entry, imageFile: entry.image, musicLink: entry.musicLink };
+          return acc;
+        }, {});
+        setJournalEntries(entries);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the journal entries!', error);
+      });
   }, []);
-  
+
+  const handleSaveEntry = useCallback((date, mood, entry, imageFile, musicLink) => {
+    const formattedDate = date.toISOString().split('T')[0];
+    setJournalEntries(prevEntries => ({
+      ...prevEntries,
+      [formattedDate]: { mood, entry, imageFile, musicLink },
+    }));
+  }, []);
+
   const dayTileContent = ({ date }) => {
-    const entry = journalEntries[date.toDateString()];
+    const formattedDate = date.toISOString().split('T')[0];
+    const entry = journalEntries[formattedDate];
     if (entry && entry.mood === 'sprout') {
-      return <div><img src={sprout}></img></div>;
+      return <div><img src={sprout} alt="sprout" /></div>;
+    } else if (entry && entry.mood === 'halfBloom') {
+      return <div><img src={halfBloom} alt="half bloom" /></div>;
+    } else if (entry && entry.mood === 'fullBloom') {
+      return <div><img src={fullBloom} alt="full bloom" /></div>;
+    } else if (entry && entry.mood === 'faded') {
+      return <div><img src={faded} alt="faded" /></div>;
+    } else if (!entry || entry.mood === '') {
+      return <div><img alt="" /></div>;
     }
-	else if (entry && entry.mood === 'halfBloom') {
-		return <div><img src={halfBloom}></img></div>;
-	}
-	else if (entry && entry.mood === 'fullBloom') {
-		return <div><img src={fullBloom}></img></div>;
-	}
-	else if (entry && entry.mood === 'faded') {
-		return <div><img src={faded}></img></div>;
-	}
-	else if (!entry || entry.mood == '') {
-		return <div><img></img></div>
-	}
 
     return null;
   };
