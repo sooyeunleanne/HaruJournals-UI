@@ -37,13 +37,15 @@
 }
 
 .music-link-textarea {
-    height: 1rem;
-    background: none;
+    height: 2rem;
     border: none;
-    line-height: 0.5rem;
     width: 30rem;
-    color: white;
-    overflow-x: scroll;
+    color: black;
     vertical-align: middle;
     resize: none;
 }
+
+.transparent-iframe {
+    background-color: transparent;
+  }
+  

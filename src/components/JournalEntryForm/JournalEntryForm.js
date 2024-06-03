@@ -20,6 +20,8 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
   const [entryUnfilled, setEntryUnfilled] = useState(false);
   const [moodUnfilled, setMoodUnfilled] = useState(false);
 
+  const [showPlayer, setShowPlayer] = useState(false);
+
   useEffect(() => {
     setJournalEntry(entry || ''); // Set the initial value of the textarea
     setMood(mood || ''); // Set the initial value of the textarea
@@ -47,6 +49,11 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
 
     return embedUrl;
   }
+
+  const handleSearchMusicClick = () => {
+    setJournalMusicLink(convertSpotifyUrl(journalMusicLink));
+    setShowPlayer(true);
+  };
 
   const handleSave = () => {
     if (journalMood !== '' && journalEntry !== '') {
@@ -101,9 +108,22 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
         <p>Add your song for the day: </p>
         <textarea className='music-link-textarea' type="text"
         value={journalMusicLink}
-        onChange={(e) => setJournalMusicLink(convertSpotifyUrl(e.target.value))}
+        onChange={(e) => setJournalMusicLink(e.target.value)}
         />
-        {(journalMusicLink !== '') && <iframe src={journalMusicLink} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>}
+        <button onClick={handleSearchMusicClick}>Search</button>
+        {((journalMusicLink !== '') && showPlayer) && 
+        <iframe 
+          src={journalMusicLink} 
+          width="100%" 
+          height="152" 
+          frameBorder="0" 
+          allowfullscreen="" 
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+          allowTransparency="true" 
+          loading="lazy" 
+          className="transparent-iframe"
+        ></iframe>
+      }
       </div>
 
       <p className={(entryUnfilled && journalEntry === '') ? 'alert' : 'initial'}>
