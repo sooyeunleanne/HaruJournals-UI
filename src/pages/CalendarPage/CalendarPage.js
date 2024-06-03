@@ -77,19 +77,6 @@ function CalendarPage() {
 		  musicLink={journalEntries[selectedDate.toDateString()]?.musicLink}
         />
       </div>
-
-	  {/* <div>uncomment to see how journal entries are saved ~</div> */}
-			{/* <div>
-			<h2>Saved Journal Entries</h2>
-			<ul>
-			{Object.entries(journalEntries).map(([date, entry]) => (
-			<li key={date}>
-				<strong>{date}</strong>: Mood: {entry.mood}, Entry: {entry.entry}
-			</li>
-			))}
-
-			</ul>
-			</div> */}
     </div>
   );
 }
