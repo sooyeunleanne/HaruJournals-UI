@@ -1,9 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import './LogIn.css';
+import './LogInPage.css';
+
+import LogInComponent from '../../components/LogInComponent/LogInComponent';
+import SignUpComponent from '../../components/SignUpComponent/SignUpComponent';
 
 import openscreen from '../../assets/openscreen.png';
 
-function LogIn() {
+function LogInPage() {
     const [openLogIn, setOpenLogIn] = useState(false);
 
     const onLogInClick = useCallback(() => {
@@ -45,32 +48,4 @@ function LogIn() {
     );
 }
 
-function LogInComponent({ onCloseClick, onSignUpClick }) {
-    return (
-        <div className='popup-container'>
-            <button className='close-button' onClick={onCloseClick}> X </button>
-            <h1>Log-in</h1>
-            <p>Username</p>
-            <textarea className='login-textarea'></textarea>
-            <p>Password</p>
-            <textarea className='login-textarea'></textarea>
-            <button className='connect-to-button' onClick={onSignUpClick}>Sign up</button>            
-        </div>
-    );
-}
-
-function SignUpComponent( {onCloseClick, onLogInClick} ) {
-    return (
-        <div className='popup-container'>
-            <button className='close-button' onClick={onCloseClick}> X </button>
-            <h1>Sign-up</h1>
-            <p>Username</p>
-            <textarea className='login-textarea'></textarea>
-            <p>Password</p>
-            <textarea className='login-textarea'></textarea>
-
-            <button className='connect-to-button' onClick={onLogInClick}>Log-in</button>            
-        </div>
-    )
-}
-export default LogIn;
+export default LogInPage;
