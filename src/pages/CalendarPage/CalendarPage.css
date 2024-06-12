@@ -1,10 +1,11 @@
 /* todo: delete file if not needed */
 #landing-page{
+  background: #9D82C3;
   background-image: url("../../assets/light-mode/desktop-wallpaper.png");
-  max-height: 100vh;
 }
 
 .page-container {
+  padding-top: 3rem;
     display: flex;
     flex-wrap: wrap;
   }
