@@ -58,7 +58,7 @@ function CalendarPage() {
 
   return (
     <div id = "landing-page">	  
-		<Header />
+		{/* <Header /> */}
       <div className='page-container'>
 		<div className='calendar-container'>
 			<Calendar
