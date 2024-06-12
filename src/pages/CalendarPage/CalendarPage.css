@@ -2,6 +2,7 @@
 .page-container {
     display: flex;
     flex-wrap: wrap;
+    background-image: url("../../assets/light-mode/desktop-wallpaper.png")
   }
 
   .calendar-container {
