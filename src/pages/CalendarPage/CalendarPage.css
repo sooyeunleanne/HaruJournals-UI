@@ -1,8 +1,12 @@
 /* todo: delete file if not needed */
+#landing-page{
+  background-image: url("../../assets/light-mode/desktop-wallpaper.png");
+  max-height: 100vh;
+}
+
 .page-container {
     display: flex;
     flex-wrap: wrap;
-    background-image: url("../../assets/light-mode/desktop-wallpaper.png")
   }
 
   .calendar-container {

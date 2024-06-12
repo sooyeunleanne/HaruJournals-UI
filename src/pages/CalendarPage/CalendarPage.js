@@ -57,7 +57,7 @@ function CalendarPage() {
   };
 
   return (
-    <div>	  
+    <div id = "landing-page">	  
 		<Header />
       <div className='page-container'>
 		<div className='calendar-container'>
