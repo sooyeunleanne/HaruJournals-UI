@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Calendar } from 'react-calendar';
-import { Header } from '../../components/Header/Header';
 import { JournalEntryForm } from '../../components/JournalEntryForm/JournalEntryForm';
 import MoodOptionsComponent from '../../components/JournalEntryForm/MoodOptionsComponent/MoodOptionsComponent';
 import './CalendarPage.css';
