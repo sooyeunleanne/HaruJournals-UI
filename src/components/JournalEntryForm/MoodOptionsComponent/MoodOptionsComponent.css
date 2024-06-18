@@ -1,13 +1,23 @@
 .mood-options-bar {
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: white;
-    color: black;
+    margin-bottom: 2rem;
     display: flex;
-    background: #F1EFFF;
     border-radius: 2rem;;
     justify-content: space-evenly;
+}
+
+.light-mode .mood-options-bar {
+  background: #F1EFFF;
+  color: black;
+  box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.25); 
+}
+
+.dark-mode .mood-options-bar {
+  background: #121933;
+  color: white;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 130, 0.25); 
 }
 
 .mood-button {
@@ -19,7 +29,7 @@
     border-radius: 2rem;
     
     img {
-      height: 1.75rem;
+      height: 2.5rem;
       vertical-align: middle;
     }
   }
@@ -36,6 +46,12 @@
     text-align: center;
     line-height: 4rem;
     border-radius: 2rem;
-    
-    outline: 2px solid #6E6BC9;
+}
+
+.light-mode .selected {
+  outline: 2px solid #6E6BC9;
+}
+
+.dark-mode .selected {
+  outline: 2px solid rgba(255, 255, 130, 0.5);
 }

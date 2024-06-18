@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Calendar } from 'react-calendar';
+import Header from '../../components/Header/Header';
 import { JournalEntryForm } from '../../components/JournalEntryForm/JournalEntryForm';
 import MoodOptionsComponent from '../../components/JournalEntryForm/MoodOptionsComponent/MoodOptionsComponent';
 import './CalendarPage.css';
@@ -9,6 +10,8 @@ import sprout from '../../assets/calendar-icons/sprout.png';
 import halfBloom from '../../assets/calendar-icons/half-bloom.png';
 import fullBloom from '../../assets/calendar-icons/full-bloom.png';
 import faded from '../../assets/calendar-icons/faded.png';
+import bubbly from '../../assets/calendar-icons/bubbly.png';
+
 import BlinkingImage from '../../components/BlinkingImages/BlinkingImages';
 
 
@@ -16,6 +19,25 @@ function CalendarPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [journalMood, setMood] = useState('');
   const [journalEntries, setJournalEntries] = useState({});
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleDarkModeChange = (isDarkMode) => {
+    setDarkMode(isDarkMode);
+    // Apply dark mode class to body element
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+    } else {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+      }
+  };
+
+  // Ensure initial class application
+  useEffect(() => {
+    document.body.classList.add(darkMode ? 'dark-mode' : 'light-mode');
+}, [darkMode]);
+
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/journals')
@@ -60,6 +82,8 @@ function CalendarPage() {
       return <div><img className='tile-content' src={fullBloom} alt="full bloom" /></div>;
     } else if (entry && entry.mood === 'faded') {
       return <div><img className='tile-content' src={faded} alt="faded" /></div>;
+    } else if (entry && entry.mood === 'bubbly') {
+      return <div><img className='tile-content' src={bubbly} alt="bubbly" /></div>;
     } else if (!entry || entry.mood === '') {
       return <div><img className='tile-content' alt="" /></div>;
     }
@@ -71,8 +95,10 @@ function CalendarPage() {
 
   return (
     <div id = "landing-page">	  
+      <Header onDarkModeChange={handleDarkModeChange} />
+      <BlinkingImage />
+
       <div className='page-container'>
-        <BlinkingImage />
         <div className='calendar-container'>
           <Calendar
             onChange={setSelectedDate}

@@ -13,6 +13,19 @@
     width: 90%;
 }
 
+.light-mode .title-textarea {
+    color: black;
+}
+
+
+.dark-mode .title-textarea {
+    color: white;
+}
+
+.title-textarea:focus {
+    outline: none;
+}
+
 .journal-textarea {
     height: 20rem;
     width: 90%;
@@ -21,6 +34,19 @@
     vertical-align: top;
     overflow-wrap: break-word; /* Wrap the text at the end of the input field */
     resize: none;
+}
+
+.light-mode .journal-textarea {
+    color: black;
+}
+
+
+.dark-mode .journal-textarea {
+    color: white;
+}
+
+.journal-textarea:focus {
+    outline: none;
 }
 
 .journal-container {
@@ -33,6 +59,19 @@
     background: #F1EFFF;
     color: black;
     font-size: 1rem;
+    margin-bottom: 3rem;
+}
+
+.light-mode .journal-container {
+    background: #F1EFFF;
+    color: black;
+    box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.25); 
+}
+
+.dark-mode .journal-container {
+    background: #121933;
+    color: white;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 130, 0.25); 
 }
 
 .alert {
@@ -76,6 +115,16 @@
     border-radius: 0.5rem;
 }
 
+.light-mode .music-search-button {
+    background: linear-gradient(#9D9BDF, #6C69C8);
+    color: white;
+}
+
+.dark-mode .music-search-button {
+    background: linear-gradient(#447199, #03374C);
+    color: white;
+}
+
 input::file-selector-button {
     margin-top: 0.75rem;
     margin-left: 0.5rem;
@@ -87,4 +136,15 @@ input::file-selector-button {
     color: white;
     border: none;
     border-radius: 0.5rem;
+}
+
+
+.light-mode input::file-selector-button {
+    background: linear-gradient(#9D9BDF, #6C69C8);
+    color: white;
+}
+
+.dark-mode input::file-selector-button {
+    background: linear-gradient(#447199, #03374C);
+    color: white;
 }
