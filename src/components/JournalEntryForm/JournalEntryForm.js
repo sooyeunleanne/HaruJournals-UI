@@ -118,7 +118,7 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
       
       {
         showAddMusic && (
-          <div style={{display: 'flex', flexWrap: 'wrap'}}>
+          <div style={{display: 'flex', flexWrap: 'wrap', marginBottom: '1rem'}}>
             <p>Song for the day: </p>
             <textarea className='music-link-textarea' type="text"
             placeholder='Copy and paste Spotify link here ... '
@@ -137,7 +137,7 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
         showAddImage && 
         (
           <div>
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <div style={{display: 'flex', flexWrap: 'wrap', marginBottom: '1rem'}}>
               <p>Add image (optional):</p>
               <input type='file' onChange={handleImageUpload}/>
             </div>
