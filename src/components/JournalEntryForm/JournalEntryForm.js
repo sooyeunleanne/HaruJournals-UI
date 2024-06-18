@@ -26,9 +26,18 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
     setJournalMusicLink(musicLink || '');
   }, [entry, mood, imageFile, musicLink]);
 
-  function handleImageUpload(e) {
-    setJournalImage(URL.createObjectURL(e.target.files[0]));
-  }
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setJournalImage(reader.result); // Update state with base64 image data
+    };
+
+    if (file) {
+      reader.readAsDataURL(file); // Convert file to base64 string
+    }
+  };
 
   function convertSpotifyUrl(url) {
     // Define the base URL for embedding
@@ -102,31 +111,23 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
 
   return (
     <div className='journal-container'>
-       <textarea className='title-textarea' type="text" placeholder='Enter title ... '
+       <textarea className='title-textarea' type="text" placeholder='Title '
         value={journalTitle}
         onChange={(e) => setJournalTitle(e.target.value)}
       />
       
       {
         showAddMusic && (
-          <div style={{display: 'flex', flexWrap: 'wrap'}}>
-            <p>Add your song for the day: </p>
+          <div style={{display: 'flex', flexWrap: 'wrap', marginBottom: '1rem'}}>
+            <p>Song for the day: </p>
             <textarea className='music-link-textarea' type="text"
+            placeholder='Copy and paste Spotify link here ... '
             value={journalMusicLink}
             onChange={(e) => setJournalMusicLink(e.target.value)}
             />
-            <button onClick={handleSearchMusicClick}>Search</button>
+            <button className='music-search-button' onClick={handleSearchMusicClick}>Search</button>
             {((journalMusicLink !== '') && showPlayer) && 
-            <iframe
-                src={journalMusicLink}
-                width="100%"
-                height="152"
-                allowFullScreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                allowTransparency="true"
-                loading="lazy"
-                className="transparent-iframe"
-              ></iframe>
+            <iframe style={{borderRadius:'1.5rem'}} src={journalMusicLink} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           }
           </div>
         )
@@ -136,10 +137,11 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
         showAddImage && 
         (
           <div>
-            <p>Add image (optional):</p>
-            <img className='uploaded-photo' src={journalImage}/>
-            <br/>
-            <input type='file' onChange={handleImageUpload}/>
+            <div style={{display: 'flex', flexWrap: 'wrap', marginBottom: '1rem'}}>
+              <p>Add image (optional):</p>
+              <input type='file' onChange={handleImageUpload}/>
+            </div>
+            {journalImage && <img className='uploaded-photo' src={journalImage} alt='Uploaded' />}
           </div>
         )
       }

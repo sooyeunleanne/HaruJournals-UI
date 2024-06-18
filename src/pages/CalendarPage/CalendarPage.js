@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Calendar } from 'react-calendar';
-import { Header } from '../../components/Header/Header';
 import { JournalEntryForm } from '../../components/JournalEntryForm/JournalEntryForm';
 import MoodOptionsComponent from '../../components/JournalEntryForm/MoodOptionsComponent/MoodOptionsComponent';
 import './CalendarPage.css';
@@ -53,15 +52,15 @@ function CalendarPage() {
     const formattedDate = date.toISOString().split('T')[0];
     const entry = journalEntries[formattedDate];
     if (entry && entry.mood === 'sprout') {
-      return <div><img src={sprout} alt="sprout" /></div>;
+      return <div><img className='tile-content' src={sprout} alt="sprout" /></div>;
     } else if (entry && entry.mood === 'halfBloom') {
-      return <div><img src={halfBloom} alt="half bloom" /></div>;
+      return <div><img className='tile-content' src={halfBloom} alt="half bloom" /></div>;
     } else if (entry && entry.mood === 'fullBloom') {
-      return <div><img src={fullBloom} alt="full bloom" /></div>;
+      return <div><img className='tile-content' src={fullBloom} alt="full bloom" /></div>;
     } else if (entry && entry.mood === 'faded') {
-      return <div><img src={faded} alt="faded" /></div>;
+      return <div><img className='tile-content' src={faded} alt="faded" /></div>;
     } else if (!entry || entry.mood === '') {
-      return <div><img alt="" /></div>;
+      return <div><img className='tile-content' alt="" /></div>;
     }
 
     return null;

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './AnimatedToolbar.css'; // Import your CSS file for styling
 
+import addIcon from '../../assets/light-mode/addIcon.png';
+import addImage from '../../assets/light-mode/addImageIcon.png';
+import addMusic from '../../assets/light-mode/addMusicIcon.png';
+
 const AnimatedToolbar = ({onItemClick}) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -14,15 +18,11 @@ const AnimatedToolbar = ({onItemClick}) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {!isHovered && (<p>+</p>)}
+      {!isHovered && (<img className='add-button' src={addIcon}/>)}
       {isHovered && (
         <div className="toolbar-items">
-          <button className="toolbar-item" onClick={() => handleItemClick('addMusic')}>
-            Music
-          </button>
-          <button className="toolbar-item" onClick={() => handleItemClick('addImage')}>
-            Image
-          </button>
+          <img className="toolbar-item" onClick={() => handleItemClick('addMusic')} src={addMusic}></img>
+          <img className="toolbar-item" onClick={() => handleItemClick('addImage')} src={addImage}></img>
         </div>
       )}
     </div>
