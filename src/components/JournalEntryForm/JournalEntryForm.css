@@ -14,11 +14,6 @@
     width: 90%;
 }
 
-.heading-container {
-    width: 100%;
-    text-align: center;
-} 
-
 .journal-textarea {
     height: 20rem;
     width: 90%;
@@ -31,13 +26,14 @@
 
 .journal-container {
     display: block;
-    width: 50rem;
+    width: 40rem;
     margin-left: auto;
     margin-right: auto;
     padding: 2rem;
     border-radius: 3rem;
     background: #F1EFFF;
     color: black;
+    font-size: 1rem;
 }
 
 .alert {
@@ -50,18 +46,46 @@
     margin-right: auto;
     width: 10rem;
     height: auto;
+    border-radius: 1rem;
 }
 
 .music-link-textarea {
-    height: 2rem;
+    height: 1.5rem;
+    margin-top: 0.75rem;
+    margin-left: 0.5rem;
+    padding-top: 0.25rem;
     border: none;
-    width: 30rem;
-    color: black;
+    width: 60%;
+    background: none;
     vertical-align: middle;
     resize: none;
+    font-size: 0.9rem;
+    font-family: "1HoonDdukBokki", serif;
+    overflow: auto;
 }
 
-.transparent-iframe {
-    background-color: transparent;
-  }
-  
+.music-search-button {
+    margin-top: 0.75rem;
+    margin-left: 0.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    font-family: "1HoonDdukBokki", serif;
+    background: linear-gradient(#9D9BDF, #6C69C8);
+    width: 10%;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+input::file-selector-button {
+    margin-top: 0.75rem;
+    margin-left: 0.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    font-family: "1HoonDdukBokki", serif;
+    background: linear-gradient(#9D9BDF, #6C69C8);
+    width: 10rem;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+}
