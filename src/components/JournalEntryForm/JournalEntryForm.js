@@ -102,7 +102,7 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
 
   return (
     <div className='journal-container'>
-       <textarea className='title-textarea' type="text" placeholder='Enter title ... '
+       <textarea className='title-textarea' type="text" placeholder='Title '
         value={journalTitle}
         onChange={(e) => setJournalTitle(e.target.value)}
       />

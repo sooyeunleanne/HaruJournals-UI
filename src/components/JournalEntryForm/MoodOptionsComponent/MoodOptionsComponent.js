@@ -19,6 +19,7 @@ export default function MoodOptionsComponent({ setMood, moodInEntry }) {
   
     return (
       <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+        <p>How fulfilling was today?</p>
         <div className={`mood-button ${selectedMood === 'sprout' && 'selected'}`} onClick={() => handleMoodClick('sprout')}><img src={sprout}></img></div>
         <div className={`mood-button ${selectedMood === 'halfBloom' && 'selected'}`} onClick={() => handleMoodClick('halfBloom')}><img src={halfBloom}></img></div>
         <div className={`mood-button ${selectedMood === 'fullBloom' && 'selected'}`} onClick={() => handleMoodClick('fullBloom')}><img src={fullBloom}></img></div>
