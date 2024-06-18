@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import './AnimatedToolbar.css'; // Import your CSS file for styling
 
-const AnimatedToolbar = () => {
+const AnimatedToolbar = ({onItemClick}) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const handleItemClick = (item) => {
+    onItemClick(item); // Pass item information to parent component
+  };
 
   return (
     <div
@@ -13,9 +17,12 @@ const AnimatedToolbar = () => {
       {!isHovered && (<p>+</p>)}
       {isHovered && (
         <div className="toolbar-items">
-          <button className="toolbar-item">Item 1</button>
-          <button className="toolbar-item">Item 2</button>
-          <button className="toolbar-item">Add image</button>
+          <button className="toolbar-item" onClick={() => handleItemClick('addMusic')}>
+            Music
+          </button>
+          <button className="toolbar-item" onClick={() => handleItemClick('addImage')}>
+            Image
+          </button>
         </div>
       )}
     </div>

@@ -10,9 +10,13 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
   const [journalEntry, setJournalEntry] = useState(entry);
   const [journalImage, setJournalImage] = useState(imageFile);
   const [journalMusicLink, setJournalMusicLink] = useState(musicLink);
+
   const [entryUnfilled, setEntryUnfilled] = useState(false);
   const [moodUnfilled, setMoodUnfilled] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
+  const [showAddMusic, setShowAddMusic] = useState(false);
+  const [showAddImage, setShowAddImage] = useState(false);
+
 
   useEffect(() => {
     setJournalTitle(title || '');
@@ -86,6 +90,15 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
     }
   };
 
+  const handleAddOptions = (item) => {
+    if (item == 'addImage') {
+      setShowAddImage(true);
+    }
+    else if (item == 'addMusic') {
+      setShowAddMusic(true);
+    }
+  };
+
 
   return (
     <div className='journal-container'>
@@ -94,26 +107,42 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
         onChange={(e) => setJournalTitle(e.target.value)}
       />
       
-      <div style={{display: 'flex', flexWrap: 'wrap'}}>
-        <p>Add your song for the day: </p>
-        <textarea className='music-link-textarea' type="text"
-        value={journalMusicLink}
-        onChange={(e) => setJournalMusicLink(e.target.value)}
-        />
-        <button onClick={handleSearchMusicClick}>Search</button>
-        {((journalMusicLink !== '') && showPlayer) && 
-        <iframe
-            src={journalMusicLink}
-            width="100%"
-            height="152"
-            allowFullScreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            allowTransparency="true"
-            loading="lazy"
-            className="transparent-iframe"
-          ></iframe>
+      {
+        showAddMusic && (
+          <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <p>Add your song for the day: </p>
+            <textarea className='music-link-textarea' type="text"
+            value={journalMusicLink}
+            onChange={(e) => setJournalMusicLink(e.target.value)}
+            />
+            <button onClick={handleSearchMusicClick}>Search</button>
+            {((journalMusicLink !== '') && showPlayer) && 
+            <iframe
+                src={journalMusicLink}
+                width="100%"
+                height="152"
+                allowFullScreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                allowTransparency="true"
+                loading="lazy"
+                className="transparent-iframe"
+              ></iframe>
+          }
+          </div>
+        )
       }
-      </div>
+
+      {
+        showAddImage && 
+        (
+          <div>
+            <p>Add image (optional):</p>
+            <img className='uploaded-photo' src={journalImage}/>
+            <br/>
+            <input type='file' onChange={handleImageUpload}/>
+          </div>
+        )
+      }
 
       <p className={(entryUnfilled && journalEntry === '') ? 'alert' : 'initial'}>
       {(entryUnfilled && journalEntry === '') && <span className='alert'>Missing! </span>}
@@ -122,13 +151,8 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
         value={journalEntry}
         onChange={(e) => setJournalEntry(e.target.value)}
       />
-
-      <p>Add image (optional):</p>
-        <img className='uploaded-photo' src={journalImage}/>
-        <br/>
-        <input type='file' onChange={handleImageUpload}/>
       
-        <AnimatedToolbar />
+      <AnimatedToolbar onItemClick={handleAddOptions} />
 
       <button className='save-button' onClick={handleSave}>Save</button>
     </div>
