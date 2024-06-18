@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './MoodOptionsComponent.css';
 
 import sprout from '../../../assets/calendar-icons/sprout.png';
 import halfBloom from '../../../assets/calendar-icons/half-bloom.png';
@@ -18,7 +19,7 @@ export default function MoodOptionsComponent({ setMood, moodInEntry }) {
     };
   
     return (
-      <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+      <div className='mood-options-bar'>
         <p>How fulfilling was today?</p>
         <div className={`mood-button ${selectedMood === 'sprout' && 'selected'}`} onClick={() => handleMoodClick('sprout')}><img src={sprout}></img></div>
         <div className={`mood-button ${selectedMood === 'halfBloom' && 'selected'}`} onClick={() => handleMoodClick('halfBloom')}><img src={halfBloom}></img></div>

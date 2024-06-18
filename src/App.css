@@ -67,41 +67,10 @@ body {
   color: white;
   font-family: "1HoonDdukBokki", serif;
   background: linear-gradient(#9D9BDF, #6C69C8);
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .save-button:hover {
   border-width: 0.1rem;
   cursor: pointer;
-}
-
-
-.mood-button {
-  height: 4rem;
-  width: 4rem;
-  background: none;
-  text-align: center;
-  line-height: 4rem;
-  border-radius: 2rem;
-  
-  img {
-    height: 1.75rem;
-    vertical-align: middle;
-  }
-}
-
-.mood-button:hover {
-  line-height: 4rem;
-  cursor: pointer;
-}
-
-.selected {
-  height: 4rem;
-  width: 4rem;
-  background: none;
-  text-align: center;
-  line-height: 4rem;
-  border-radius: 2rem;
-  
-  outline: 2px solid #D6C672;
 }

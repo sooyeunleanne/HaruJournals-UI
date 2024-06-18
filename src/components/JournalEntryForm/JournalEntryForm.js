@@ -143,7 +143,6 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
             </div>
             {journalImage && <img className='uploaded-photo' src={journalImage} alt='Uploaded' />}
           </div>
-          
         )
       }
 
