@@ -9,6 +9,7 @@ import sprout from '../../assets/calendar-icons/sprout.png';
 import halfBloom from '../../assets/calendar-icons/half-bloom.png';
 import fullBloom from '../../assets/calendar-icons/full-bloom.png';
 import faded from '../../assets/calendar-icons/faded.png';
+import BlinkingImage from '../../components/BlinkingImages/BlinkingImages';
 
 
 function CalendarPage() {
@@ -70,27 +71,27 @@ function CalendarPage() {
 
   return (
     <div id = "landing-page">	  
-		{/* <Header /> */}
       <div className='page-container'>
-		<div className='calendar-container'>
-			<Calendar
-				onChange={setSelectedDate}
-				value={selectedDate}
-				tileContent={dayTileContent}
-				/>
-      <MoodOptionsComponent setMood={setMood} moodInEntry={journalEntries[selectedDate.toISOString().split('T')[0]]?.mood || ''} />
-      </div>
+        <BlinkingImage />
+        <div className='calendar-container'>
+          <Calendar
+            onChange={setSelectedDate}
+            value={selectedDate}
+            tileContent={dayTileContent}
+            />
+          <MoodOptionsComponent setMood={setMood} moodInEntry={journalEntries[selectedDate.toISOString().split('T')[0]]?.mood || ''} />
+        </div>
 
-      <JournalEntryForm
-        selectedDate={selectedDate}
-        title={entryForSelectedDate ? entryForSelectedDate.title : ''}
-        mood={journalMood}
-        onSave={handleSaveEntry}
-        entry={entryForSelectedDate ? entryForSelectedDate.entry : ''}
-        imageFile={entryForSelectedDate ? entryForSelectedDate.imageFile : null}
-        musicLink={entryForSelectedDate ? entryForSelectedDate.musicLink : ''}
-      />
-      </div>
+        <JournalEntryForm
+          selectedDate={selectedDate}
+          title={entryForSelectedDate ? entryForSelectedDate.title : ''}
+          mood={journalMood}
+          onSave={handleSaveEntry}
+          entry={entryForSelectedDate ? entryForSelectedDate.entry : ''}
+          imageFile={entryForSelectedDate ? entryForSelectedDate.imageFile : null}
+          musicLink={entryForSelectedDate ? entryForSelectedDate.musicLink : ''}
+        />
+        </div>
     </div>
   );
 }
