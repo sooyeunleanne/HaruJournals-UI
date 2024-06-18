@@ -22,7 +22,7 @@ function CalendarPage() {
       .then(response => {
         const entries = response.data.reduce((acc, entry) => {
           const date = new Date(entry.date).toISOString().split('T')[0];
-          acc[date] = { mood: entry.mood, entry: entry.entry, imageFile: entry.image, musicLink: entry.musicLink };
+          acc[date] = { title: entry.title, mood: entry.mood, entry: entry.entry, imageFile: entry.image, musicLink: entry.musicLink };
           return acc;
         }, {});
         setJournalEntries(entries);
@@ -32,9 +32,9 @@ function CalendarPage() {
       });
   }, []);
 
-  const handleSaveEntry = useCallback((date, mood, entry, imageFile, musicLink) => {
+  const handleSaveEntry = useCallback((title, date, mood, entry, imageFile, musicLink) => {
     const formattedDate = date.toISOString().split('T')[0];
-    const journalEntry = { date: formattedDate, mood, entry, image: imageFile, musicLink };
+    const journalEntry = { title, date: formattedDate, mood, entry, image: imageFile, musicLink };
 
     axios.post('http://localhost:8080/api/journals', journalEntry)
       .then(response => {
@@ -67,6 +67,8 @@ function CalendarPage() {
     return null;
   };
 
+  const entryForSelectedDate = journalEntries[selectedDate.toISOString().split('T')[0]];
+
   return (
     <div id = "landing-page">	  
 		{/* <Header /> */}
@@ -78,17 +80,17 @@ function CalendarPage() {
 				tileContent={dayTileContent}
 				/>
       <MoodOptionsComponent setMood={setMood} moodInEntry={journalEntries[selectedDate.toISOString().split('T')[0]]?.mood || ''} />
-
       </div>
 
       <JournalEntryForm
-          selectedDate={selectedDate}
-          mood={journalMood}
-          onSave={handleSaveEntry}
-          entry={journalEntries[selectedDate.toISOString().split('T')[0]]?.entry}
-          imageFile={journalEntries[selectedDate.toISOString().split('T')[0]]?.imageFile}
-          musicLink={journalEntries[selectedDate.toISOString().split('T')[0]]?.musicLink}
-        />
+        selectedDate={selectedDate}
+        title={entryForSelectedDate ? entryForSelectedDate.title : ''}
+        mood={journalMood}
+        onSave={handleSaveEntry}
+        entry={entryForSelectedDate ? entryForSelectedDate.entry : ''}
+        imageFile={entryForSelectedDate ? entryForSelectedDate.imageFile : null}
+        musicLink={entryForSelectedDate ? entryForSelectedDate.musicLink : ''}
+      />
       </div>
     </div>
   );

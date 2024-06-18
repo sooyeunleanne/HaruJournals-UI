@@ -2,14 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import './JournalEntryForm.css';
-import MoodOptionsComponent from './MoodOptionsComponent/MoodOptionsComponent';
+import AnimatedToolbar from '../AnimatedToolBar/AnimatedToolBar';
 
-import sprout from '../../assets/calendar-icons/sprout.png';
-import halfBloom from '../../assets/calendar-icons/half-bloom.png';
-import fullBloom from '../../assets/calendar-icons/full-bloom.png';
-import faded from '../../assets/calendar-icons/faded.png';
-
-export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile, musicLink }) => {
+export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, imageFile, musicLink }) => {
+  const [journalTitle, setJournalTitle] = useState(title);
   const [journalMood, setMood] = useState(mood);
   const [journalEntry, setJournalEntry] = useState(entry);
   const [journalImage, setJournalImage] = useState(imageFile);
@@ -19,6 +15,7 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
   const [showPlayer, setShowPlayer] = useState(false);
 
   useEffect(() => {
+    setJournalTitle(title || '');
     setJournalEntry(entry || '');
     setMood(mood || '');
     setJournalImage(imageFile || null);
@@ -57,6 +54,7 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
       setMoodUnfilled(false);
   
       const journal = {
+        title: journalTitle,
         date: selectedDate,
         mood: journalMood,
         entry: journalEntry,
@@ -68,7 +66,8 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
         .then(response => {
           console.log('Journal saved:', response.data);
           // Update state or provide feedback to the user here
-          onSave(selectedDate, journalMood, journalEntry, journalImage, journalMusicLink);
+          onSave(selectedDate, journalTitle, journalMood, journalEntry, journalImage, journalMusicLink);
+          setJournalTitle('');
           setJournalEntry('');
           setMood('');
           setJournalImage(null);
@@ -90,6 +89,11 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
 
   return (
     <div className='journal-container'>
+       <textarea className='title-textarea' type="text" placeholder='Enter title ... '
+        value={journalTitle}
+        onChange={(e) => setJournalTitle(e.target.value)}
+      />
+      
       <div style={{display: 'flex', flexWrap: 'wrap'}}>
         <p>Add your song for the day: </p>
         <textarea className='music-link-textarea' type="text"
@@ -113,8 +117,8 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
 
       <p className={(entryUnfilled && journalEntry === '') ? 'alert' : 'initial'}>
       {(entryUnfilled && journalEntry === '') && <span className='alert'>Missing! </span>}
-      Journal your day:</p> 
-      <textarea className='journal-textarea' type="text"
+      </p> 
+      <textarea className='journal-textarea' type="text" placeholder='Start typing here ... '
         value={journalEntry}
         onChange={(e) => setJournalEntry(e.target.value)}
       />
@@ -123,13 +127,18 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
         <img className='uploaded-photo' src={journalImage}/>
         <br/>
         <input type='file' onChange={handleImageUpload}/>
+      
+        <AnimatedToolbar />
+
       <button className='save-button' onClick={handleSave}>Save</button>
     </div>
+    
   );
 };
 
 JournalEntryForm.propTypes = {
   selectedDate: PropTypes.instanceOf(Date).isRequired,
+  title: PropTypes.string,
   onSave: PropTypes.func.isRequired,
   entry: PropTypes.string,
   mood: PropTypes.string

@@ -23,9 +23,9 @@ body {
   vertical-align: top;
   overflow-wrap: break-word; /* Wrap the text at the end of the input field */
   resize: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-family: "1HoonDdukBokki", sans-serif;
-  background-color: #D9D9D9;
+  background: none;
 }
 
 .popup-container {

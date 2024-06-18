@@ -1,0 +1,40 @@
+.animated-toolbar {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    gap: 10px; /* Adjust the gap between items as needed */
+    padding: 5px; /* Small padding for collapsed state */
+    background-color: #f0f0f0; /* Background color of the toolbar */
+    border-radius: 20px; /* Rounded corners for the toolbar */
+    width: 40px; /* Small width for collapsed state */
+    height: 40px; /* Small height for collapsed state */
+    overflow: hidden; /* Hide overflow to ensure items don't show when collapsed */
+    transition: width 0.3s ease, height 0.3s ease, padding 0.3s ease; /* Smooth transition for size change */
+  }
+  
+  .animated-toolbar:hover {
+    width: 50rem; /* Expanded width on hover */
+    height: auto; /* Automatically expand height to fit content */
+    padding: 10px; /* Larger padding for expanded state */
+  }
+  
+  .toolbar-items {
+    display: flex;
+    flex-direction: row; /* Arrange items vertically */
+    gap: 5px; /* Adjust the gap between items as needed */
+  }
+  
+  .toolbar-item {
+    background-color: #3498db; /* Default background color for items */
+    color: white; /* Text color */
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+  }
+  
+  .toolbar-item:hover {
+    background-color: #2980b9; /* Hover background color */
+  }
+  
