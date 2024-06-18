@@ -13,6 +13,19 @@
     width: 90%;
 }
 
+.light-mode .title-textarea {
+    color: black;
+}
+
+
+.dark-mode .title-textarea {
+    color: white;
+}
+
+.title-textarea:focus {
+    outline: none;
+}
+
 .journal-textarea {
     height: 20rem;
     width: 90%;
@@ -21,6 +34,19 @@
     vertical-align: top;
     overflow-wrap: break-word; /* Wrap the text at the end of the input field */
     resize: none;
+}
+
+.light-mode .journal-textarea {
+    color: black;
+}
+
+
+.dark-mode .journal-textarea {
+    color: white;
+}
+
+.journal-textarea:focus {
+    outline: none;
 }
 
 .journal-container {
@@ -33,6 +59,17 @@
     background: #F1EFFF;
     color: black;
     font-size: 1rem;
+}
+
+.light-mode .journal-container {
+    background: #F1EFFF;
+    color: black;
+}
+
+.dark-mode .journal-container {
+    background: #121933;
+    color: white;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 130, 0.25); 
 }
 
 .alert {

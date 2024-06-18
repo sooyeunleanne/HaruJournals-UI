@@ -2,12 +2,21 @@
     margin-top: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: white;
-    color: black;
     display: flex;
-    background: #F1EFFF;
     border-radius: 2rem;;
     justify-content: space-evenly;
+}
+
+.light-mode .mood-options-bar {
+  background: #F1EFFF;
+  color: black;
+}
+
+
+.dark-mode .mood-options-bar {
+  background: #121933;
+  color: white;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 130, 0.25); 
 }
 
 .mood-button {
@@ -36,6 +45,12 @@
     text-align: center;
     line-height: 4rem;
     border-radius: 2rem;
-    
-    outline: 2px solid #6E6BC9;
+}
+
+.light-mode .selected {
+  outline: 2px solid #6E6BC9;
+}
+
+.dark-mode .selected {
+  outline: 2px solid white;
 }

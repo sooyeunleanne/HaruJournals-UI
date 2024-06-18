@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Calendar } from 'react-calendar';
+import Header from '../../components/Header/Header';
 import { JournalEntryForm } from '../../components/JournalEntryForm/JournalEntryForm';
 import MoodOptionsComponent from '../../components/JournalEntryForm/MoodOptionsComponent/MoodOptionsComponent';
 import './CalendarPage.css';
@@ -16,6 +17,25 @@ function CalendarPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [journalMood, setMood] = useState('');
   const [journalEntries, setJournalEntries] = useState({});
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleDarkModeChange = (isDarkMode) => {
+    setDarkMode(isDarkMode);
+    // Apply dark mode class to body element
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+    } else {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+      }
+  };
+
+  // Ensure initial class application
+  useEffect(() => {
+    document.body.classList.add(darkMode ? 'dark-mode' : 'light-mode');
+}, [darkMode]);
+
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/journals')
@@ -71,8 +91,10 @@ function CalendarPage() {
 
   return (
     <div id = "landing-page">	  
+      <Header onDarkModeChange={handleDarkModeChange} />
       <div className='page-container'>
         <BlinkingImage />
+
         <div className='calendar-container'>
           <Calendar
             onChange={setSelectedDate}

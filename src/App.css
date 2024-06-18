@@ -6,10 +6,16 @@
                             'embedded-opentype', and 'svg' */
 }
 
-body {
+body.light-mode {
+  font-family: "1HoonDdukBokki", serif;
+  color: black;
+  background-image: url("./assets/light-mode/background.png");
+}
+
+body.dark-mode {
   font-family: "1HoonDdukBokki", serif;
   color: white;
-  background-image: url("./assets/light-mode/desktop-wallpaper.png");
+  background-image: url("./assets/dark-mode/background.png");
 }
 
 .journal-textarea {
@@ -66,8 +72,15 @@ body {
   margin-right: auto;
   color: white;
   font-family: "1HoonDdukBokki", serif;
-  background: linear-gradient(#9D9BDF, #6C69C8);
   font-size: 1.25rem;
+}
+
+.light-mode .save-button {
+  background: linear-gradient(#9D9BDF, #6C69C8);
+}
+
+.dark-mode .save-button {
+  background: linear-gradient(#447199, #03374C);
 }
 
 .save-button:hover {
