@@ -14,17 +14,17 @@ const BlinkingImage = () => {
     const toggleVisibilityStar1 = () => {
         setIsStar1Visible(prev => !prev); // Toggle visibility
     };
-    const intervalStar1 = setInterval(toggleVisibilityStar1, 1500);
+    const intervalStar1 = setInterval(toggleVisibilityStar1, 2000);
 
     const toggleVisibilityStar2 = () => {
         setIsStar2Visible(prev => !prev); // Toggle visibility
     };
-    const intervalStar2 = setInterval(toggleVisibilityStar2, 2000);
+    const intervalStar2 = setInterval(toggleVisibilityStar2, 2700);
 
     const toggleVisibilityStar3 = () => {
         setIsStar3Visible(prev => !prev); // Toggle visibility
     };
-    const intervalStar3 = setInterval(toggleVisibilityStar3, 3000);
+    const intervalStar3 = setInterval(toggleVisibilityStar3, 2300);
 
 
     // Clear interval on component unmount to avoid memory leaks
