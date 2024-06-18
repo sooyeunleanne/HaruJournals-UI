@@ -10,6 +10,8 @@ import sprout from '../../assets/calendar-icons/sprout.png';
 import halfBloom from '../../assets/calendar-icons/half-bloom.png';
 import fullBloom from '../../assets/calendar-icons/full-bloom.png';
 import faded from '../../assets/calendar-icons/faded.png';
+import bubbly from '../../assets/calendar-icons/bubbly.png';
+
 import BlinkingImage from '../../components/BlinkingImages/BlinkingImages';
 
 
@@ -80,6 +82,8 @@ function CalendarPage() {
       return <div><img className='tile-content' src={fullBloom} alt="full bloom" /></div>;
     } else if (entry && entry.mood === 'faded') {
       return <div><img className='tile-content' src={faded} alt="faded" /></div>;
+    } else if (entry && entry.mood === 'bubbly') {
+      return <div><img className='tile-content' src={bubbly} alt="bubbly" /></div>;
     } else if (!entry || entry.mood === '') {
       return <div><img className='tile-content' alt="" /></div>;
     }

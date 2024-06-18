@@ -10,8 +10,8 @@
 .light-mode .mood-options-bar {
   background: #F1EFFF;
   color: black;
+  box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.25); 
 }
-
 
 .dark-mode .mood-options-bar {
   background: #121933;
@@ -28,7 +28,7 @@
     border-radius: 2rem;
     
     img {
-      height: 1.75rem;
+      height: 2.5rem;
       vertical-align: middle;
     }
   }
@@ -52,5 +52,5 @@
 }
 
 .dark-mode .selected {
-  outline: 2px solid white;
+  outline: 2px solid rgba(255, 255, 130, 0.5);
 }
