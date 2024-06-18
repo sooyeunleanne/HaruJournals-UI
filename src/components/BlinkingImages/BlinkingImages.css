@@ -1,0 +1,52 @@
+.star1-container {
+    position: fixed;
+    height: 3rem;
+    left: 2%;
+    top: 10rem;
+}
+
+.star2-container {
+    position: fixed;
+    height: 5rem;
+    left: 40%;
+    top: 50rem;
+}
+
+.star3-container {
+    position: fixed;
+    height: 7rem;
+    right: 3%;
+    top: 30rem;
+}
+
+.blinking-image {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    background-color: rgba(255, 255, 130, 0.25);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 130, 0.25); /* Adjust the shadow parameters as needed */
+}
+
+.blinking-image.visible {
+    opacity: 1;
+}
+
+.blinking-image.hidden {
+    opacity: 0;
+}
+
+.moving-planet {
+    position: fixed;
+    left: 45%;
+    width: 10rem;
+    animation: moveUpDown 2s infinite; /* Animation lasts 2 seconds and repeats infinitely */
+}
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0); /* Start and end position (at the same location) */
+    }
+    50% {
+        transform: translateY(-20px); /* Move up by 20px */
+    }
+}
