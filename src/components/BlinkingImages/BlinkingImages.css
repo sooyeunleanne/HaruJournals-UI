@@ -1,22 +1,28 @@
 .star1-container {
-    position: fixed;
-    height: 3rem;
+    position: absolute;
+    height: 2rem;
     left: 2%;
-    top: 10rem;
+    top: 5rem;
+    transform: translate(0, 0); /* Initial position, no additional translation needed */
+    z-index: -1; /* Ensure these are in the background */
 }
 
 .star2-container {
-    position: fixed;
+    position: absolute;
     height: 5rem;
     left: 40%;
     top: 50rem;
+    transform: translate(0, 0); /* Initial position, no additional translation needed */
+    z-index: -1; /* Ensure these are in the background */
 }
 
 .star3-container {
-    position: fixed;
+    position: absolute;
     height: 7rem;
     right: 3%;
     top: 30rem;
+    transform: translate(0, 0); /* Initial position, no additional translation needed */
+    z-index: -1; /* Ensure these are in the background */
 }
 
 .blinking-image {
@@ -36,10 +42,12 @@
 }
 
 .moving-planet {
-    position: fixed;
+    position: absolute;
     left: 45%;
     width: 10rem;
+    transform: translate(0, 0); /* Initial position, no additional translation needed */
     animation: moveUpDown 2s infinite; /* Animation lasts 2 seconds and repeats infinitely */
+    z-index: -1; /* Ensure these are in the background */
 }
 
 @keyframes moveUpDown {

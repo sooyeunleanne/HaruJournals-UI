@@ -96,9 +96,9 @@ function CalendarPage() {
   return (
     <div id = "landing-page">	  
       <Header onDarkModeChange={handleDarkModeChange} />
-      <div className='page-container'>
-        <BlinkingImage />
+      <BlinkingImage />
 
+      <div className='page-container'>
         <div className='calendar-container'>
           <Calendar
             onChange={setSelectedDate}
