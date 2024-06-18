@@ -2,6 +2,7 @@
     width: 100%;
     text-align: center;
 } 
+
 .journal-textarea {
     height: 20rem;
     border-radius: 3rem;
@@ -14,14 +15,18 @@
     resize: none;
     font-size: 0.9rem;
     font-family: "Karla", sans-serif;
-    background-color: white;
+    background: #F1EFFF;
 }
 
 .journal-container {
     display: block;
-    width: 40rem;
+    width: 50rem;
     margin-left: auto;
     margin-right: auto;
+    padding: 2rem;
+    border-radius: 3rem;
+    background: #F1EFFF;
+    color: black;
 }
 
 .alert {

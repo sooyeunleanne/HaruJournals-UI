@@ -10,21 +10,17 @@ import fullBloom from '../../assets/calendar-icons/full-bloom.png';
 import faded from '../../assets/calendar-icons/faded.png';
 
 export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile, musicLink }) => {
-  //handling the entries
-  const [journalMood, setMood] = useState('');
-  const [journalEntry, setJournalEntry] = useState('');
-  const [journalImage, setJournalImage] = useState(null);
-  const [journalMusicLink, setJournalMusicLink] = useState('');
-
-  //handling the alerts
+  const [journalMood, setMood] = useState(mood);
+  const [journalEntry, setJournalEntry] = useState(entry);
+  const [journalImage, setJournalImage] = useState(imageFile);
+  const [journalMusicLink, setJournalMusicLink] = useState(musicLink);
   const [entryUnfilled, setEntryUnfilled] = useState(false);
   const [moodUnfilled, setMoodUnfilled] = useState(false);
-
   const [showPlayer, setShowPlayer] = useState(false);
 
   useEffect(() => {
-    setJournalEntry(entry || ''); // Set the initial value of the textarea
-    setMood(mood || ''); // Set the initial value of the textarea
+    setJournalEntry(entry || '');
+    setMood(mood || '');
     setJournalImage(imageFile || null);
     setJournalMusicLink(musicLink || '');
   }, [entry, mood, imageFile, musicLink]);
@@ -59,7 +55,7 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
     if (journalMood !== '' && journalEntry !== '') {
       setEntryUnfilled(false);
       setMoodUnfilled(false);
-
+  
       const journal = {
         date: selectedDate,
         mood: journalMood,
@@ -67,26 +63,21 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
         image: journalImage,
         musicLink: journalMusicLink
       };
-
+  
       axios.post('http://localhost:8080/api/journals', journal)
         .then(response => {
           console.log('Journal saved:', response.data);
+          // Update state or provide feedback to the user here
+          onSave(selectedDate, journalMood, journalEntry, journalImage, journalMusicLink);
+          setJournalEntry('');
+          setMood('');
+          setJournalImage(null);
+          setJournalMusicLink('');
         })
         .catch(error => {
           console.error('There was an error saving the journal!', error);
         });
-
-      setJournalEntry(entry);
-      setMood(mood);
-      setJournalImage(imageFile);
-      setJournalMusicLink(musicLink);
-
-      // setJournalEntry('');
-      // setMood('');
-      // setJournalImage(null);
-      // setJournalMusicLink('');
-    }
-    else {
+    } else {
       if (journalMood === '') {
         setMoodUnfilled(true);
       }
@@ -99,11 +90,6 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
 
   return (
     <div className='journal-container'>
-      <p className={(moodUnfilled && journalMood === '') ? 'alert' : 'initial'}> 
-      {(moodUnfilled && journalMood === '') && <span className='alert'>Missing! </span>}
-      <b>Pick your mood:</b></p>
-      <MoodOptionsComponent setMood={setMood} moodInEntry={journalMood}/>
-
       <div style={{display: 'flex', flexWrap: 'wrap'}}>
         <p>Add your song for the day: </p>
         <textarea className='music-link-textarea' type="text"
@@ -112,17 +98,16 @@ export const JournalEntryForm = ({ selectedDate, onSave, entry, mood, imageFile,
         />
         <button onClick={handleSearchMusicClick}>Search</button>
         {((journalMusicLink !== '') && showPlayer) && 
-        <iframe 
-          src={journalMusicLink} 
-          width="100%" 
-          height="152" 
-          frameBorder="0" 
-          allowfullscreen="" 
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-          allowTransparency="true" 
-          loading="lazy" 
-          className="transparent-iframe"
-        ></iframe>
+        <iframe
+            src={journalMusicLink}
+            width="100%"
+            height="152"
+            allowFullScreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            allowTransparency="true"
+            loading="lazy"
+            className="transparent-iframe"
+          ></iframe>
       }
       </div>
 

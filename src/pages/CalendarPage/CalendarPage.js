@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Calendar } from 'react-calendar';
 import { Header } from '../../components/Header/Header';
 import { JournalEntryForm } from '../../components/JournalEntryForm/JournalEntryForm';
+import MoodOptionsComponent from '../../components/JournalEntryForm/MoodOptionsComponent/MoodOptionsComponent';
 import './CalendarPage.css';
 
 import sprout from '../../assets/calendar-icons/sprout.png';
@@ -13,6 +14,7 @@ import faded from '../../assets/calendar-icons/faded.png';
 
 function CalendarPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [journalMood, setMood] = useState('');
   const [journalEntries, setJournalEntries] = useState({});
 
   useEffect(() => {
@@ -32,11 +34,20 @@ function CalendarPage() {
 
   const handleSaveEntry = useCallback((date, mood, entry, imageFile, musicLink) => {
     const formattedDate = date.toISOString().split('T')[0];
-    setJournalEntries(prevEntries => ({
-      ...prevEntries,
-      [formattedDate]: { mood, entry, imageFile, musicLink },
-    }));
+    const journalEntry = { date: formattedDate, mood, entry, image: imageFile, musicLink };
+
+    axios.post('http://localhost:8080/api/journals', journalEntry)
+      .then(response => {
+        setJournalEntries(prevEntries => ({
+          ...prevEntries,
+          [formattedDate]: response.data,
+        }));
+      })
+      .catch(error => {
+        console.error('There was an error saving the journal entry!', error);
+      });
   }, []);
+  
 
   const dayTileContent = ({ date }) => {
     const formattedDate = date.toISOString().split('T')[0];
@@ -66,15 +77,17 @@ function CalendarPage() {
 				value={selectedDate}
 				tileContent={dayTileContent}
 				/>
-		</div>
+      <MoodOptionsComponent setMood={setMood} moodInEntry={journalEntries[selectedDate.toISOString().split('T')[0]]?.mood || ''} />
 
-        <JournalEntryForm
+      </div>
+
+      <JournalEntryForm
           selectedDate={selectedDate}
+          mood={journalMood}
           onSave={handleSaveEntry}
-          entry={journalEntries[selectedDate.toDateString()]?.entry} // Pass entry for selected date
-		  mood={journalEntries[selectedDate.toDateString()]?.mood}
-		  imageFile={journalEntries[selectedDate.toDateString()]?.imageFile}
-		  musicLink={journalEntries[selectedDate.toDateString()]?.musicLink}
+          entry={journalEntries[selectedDate.toISOString().split('T')[0]]?.entry}
+          imageFile={journalEntries[selectedDate.toISOString().split('T')[0]]?.imageFile}
+          musicLink={journalEntries[selectedDate.toISOString().split('T')[0]]?.musicLink}
         />
       </div>
     </div>
