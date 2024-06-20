@@ -1,3 +1,9 @@
+button:hover {
+    transform: scale(0.95); /* Shrink the button to 95% of its original size */
+    border: none;
+    cursor: pointer;
+}
+
 .title-textarea {
     background: none;
     border: none;
@@ -150,6 +156,10 @@ input::file-selector-button {
     border-radius: 0.75rem;
 }
 
+input::file-selector-button:hover {
+    transform: scale(0.95); /* Shrink the button to 95% of its original size */
+    cursor: pointer;
+}
 
 .light-mode input::file-selector-button {
     background: linear-gradient(#9D9BDF, #6C69C8);
