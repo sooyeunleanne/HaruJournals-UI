@@ -102,6 +102,10 @@
     overflow: auto;
 }
 
+.music-link-textarea:focus {
+    outline: none;
+}
+
 .light-mode .music-link-textarea {
     color: black;
 }
