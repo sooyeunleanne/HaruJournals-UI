@@ -16,13 +16,9 @@
   display: block;
   padding: 2rem;
   border-radius: 3rem;
-  background: #F1EFFF;
   font-size: 2rem;
-  color: black;
   line-height: 50px;
   text-decoration: none;
-
-  background-color: rgba(255, 255, 130, 0.25);
 }
 
 .light-mode .react-calendar {
@@ -35,7 +31,8 @@
 .dark-mode .react-calendar {
   background: #121933;
   color: white;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 130, 0.25); 
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.40); 
+  /* box-shadow: 0 0 10px 5px rgba(255, 255, 130, 0.25);  */
 }
 
 .react-calendar,
@@ -188,7 +185,6 @@ abbr {
 
 
 .react-calendar__tile--now {
-
 }
 
 .light-mode .react-calendar__tile--now:enabled:hover,
@@ -237,16 +233,20 @@ abbr {
   outline: none;
 }
 
-
-
-.light-mode .react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
   background: linear-gradient(#9D9BDF, #6C69C8);
   color: black;
 }
 
+.light-mode .react-calendar__tile--active:enabled:hover,
+.light-mode.react-calendar__tile--active:enabled:focus {
+  background: linear-gradient(#9D9BDF, #6C69C8);
+  color: black;
+}
+
 .dark-mode .react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
+.dark-mode .react-calendar__tile--active:enabled:focus {
   background: linear-gradient(#447199, #03374C);
   color: white;
 }

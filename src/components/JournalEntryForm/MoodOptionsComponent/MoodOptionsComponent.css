@@ -17,7 +17,7 @@
 .dark-mode .mood-options-bar {
   background: #121933;
   color: white;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 130, 0.25); 
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.40); 
 }
 
 .mood-button {
