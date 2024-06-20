@@ -16,6 +16,7 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
   const [showPlayer, setShowPlayer] = useState(false);
   const [showAddMusic, setShowAddMusic] = useState(false);
   const [showAddImage, setShowAddImage] = useState(false);
+  const [musicButtonContent, setMusicButtonContent] = useState('Search');
 
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
     setMood(mood || '');
     setJournalImage(imageFile || null);
     setJournalMusicLink(musicLink || '');
+    musicLink? setMusicButtonContent('Edit') : setMusicButtonContent('Search');
   }, [entry, mood, imageFile, musicLink]);
 
   const handleImageUpload = (e) => {
@@ -57,8 +59,16 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
   }
 
   const handleSearchMusicClick = () => {
-    setJournalMusicLink(convertSpotifyUrl(journalMusicLink));
-    setShowPlayer(true);
+    if (musicButtonContent === 'Search') {
+      setJournalMusicLink(convertSpotifyUrl(journalMusicLink));
+      setShowPlayer(true);
+      setMusicButtonContent('Edit');
+    }
+    else if (musicButtonContent === 'Edit') {
+      setJournalMusicLink('');
+      setShowPlayer(false);
+      setMusicButtonContent('Search');
+    }
   };
 
   const handleSave = () => {
@@ -120,12 +130,15 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
         showAddMusic && (
           <div style={{display: 'flex', flexWrap: 'wrap', marginBottom: '1rem'}}>
             <p>Song for the day: </p>
-            <textarea className='music-link-textarea' type="text"
-            placeholder='Copy and paste Spotify link here ... '
-            value={journalMusicLink}
-            onChange={(e) => setJournalMusicLink(e.target.value)}
-            />
-            <button className='music-search-button' onClick={handleSearchMusicClick}>Search</button>
+            {
+              (musicButtonContent === 'Search' && !showPlayer) &&
+              <textarea className='music-link-textarea' type="text"
+              placeholder='Copy and paste Spotify link here ... '
+              value={journalMusicLink}
+              onChange={(e) => setJournalMusicLink(e.target.value)}
+              />
+            }
+            <button className='music-search-button' onClick={handleSearchMusicClick}>{musicButtonContent}</button>
             {((journalMusicLink !== '') && showPlayer) && 
             <iframe style={{borderRadius:'1.5rem'}} src={journalMusicLink} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           }

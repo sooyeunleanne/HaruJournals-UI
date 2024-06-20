@@ -103,11 +103,11 @@
 }
 
 .light-mode .music-link-textarea {
-    color: white;
+    color: black;
 }
 
 .dark-mode .music-link-textarea {
-    color: black;
+    color: white;
 }
 
 .music-search-button {
