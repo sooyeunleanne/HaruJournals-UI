@@ -37,6 +37,7 @@
 .mood-button:hover {
     line-height: 4rem;
     cursor: pointer;
+    transform: scale(0.8);
 }
   
 .selected {
