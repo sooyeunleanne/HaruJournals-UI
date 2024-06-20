@@ -4,7 +4,8 @@
     left: 2%;
     top: 5rem;
     transform: translate(0, 0); /* Initial position, no additional translation needed */
-    z-index: -1; /* Ensure these are in the background */
+    z-index: -1; 
+    /* Ensure these are in the background */
 }
 
 .star2-container {
@@ -13,7 +14,8 @@
     left: 40%;
     top: 50rem;
     transform: translate(0, 0); /* Initial position, no additional translation needed */
-    z-index: -1; /* Ensure these are in the background */
+    z-index: -1;
+     /* Ensure these are in the background */
 }
 
 .star3-container {
@@ -22,7 +24,8 @@
     right: 3%;
     top: 30rem;
     transform: translate(0, 0); /* Initial position, no additional translation needed */
-    z-index: -1; /* Ensure these are in the background */
+    /* z-index: -1;  */
+    /* Ensure these are in the background */
 }
 
 .blinking-image {
