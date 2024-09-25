@@ -52,11 +52,15 @@
     height: auto;
 }
 
+.login-container {
+    width: 25rem;
+}
+
 .login-textarea {
     height: 1.2rem;
     border-radius: 1rem;
     padding: 1rem;
-    width: 15rem;
+    width: 20rem;
     vertical-align: top;
     overflow-y: hidden;
     overflow-wrap: normal; /* Wrap the text at the end of the input field */
