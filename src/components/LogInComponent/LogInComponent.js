@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
+import google from '../../assets/icons/google.png';
+
 export default function LogInComponent({ onCloseClick, onSignUpClick }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -50,7 +52,8 @@ export default function LogInComponent({ onCloseClick, onSignUpClick }) {
                 />
                 <button className='submit-button' onClick={handleLogin}>Log In</button>
                 <button className='authgoogle-button' onClick={() => window.location.href = 'http://localhost:8000/auth/google'}>
-                    Login with Google
+                    <img className='google-icon' src={google}/>
+                    <span> Sign-in with Google</span>
                 </button>
             </div>     
         </div>

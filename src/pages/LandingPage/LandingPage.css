@@ -92,12 +92,16 @@
     height: 3rem;
     border-radius: 3rem;
     border-width: 0;
-    background: linear-gradient(#9D9BDF, #6C69C8);
-    color: white;
+    background: white;
+    color: black;
 
     margin-top: 2rem;
     margin-left: auto;
     margin-right: auto;
     font-family: "1HoonDdukBokki", serif;
     font-size: 1.2rem;
+}
+
+.google-icon {
+    height: 1rem;
 }
