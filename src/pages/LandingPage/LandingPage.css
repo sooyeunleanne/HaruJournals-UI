@@ -25,6 +25,7 @@
         animation: fadeIn 1s ease-in-out;
     }
 }
+
 .open-button {
     height: 2.5rem;
     border-radius: 3rem;
@@ -69,22 +70,34 @@
     font-family: "1HoonDdukBokki", serif;
 }
 
-.connect-to-button {
+.submit-button {
     display: block;
-    width: 8rem;
-    height: 2rem;
+    width: 20rem;
+    height: 3rem;
     border-radius: 3rem;
     border-width: 0;
-    background-color: #DDDDDD;
+    background: linear-gradient(#9D9BDF, #6C69C8);
+    color: white;
+
     margin-top: 2rem;
     margin-left: auto;
     margin-right: auto;
-    font-family: "Karla", sans-serif;
-    font-size: 1rem;
+    font-family: "1HoonDdukBokki", serif;
+    font-size: 1.2rem;
 }
 
-.connect-to-button:hover {
-    background-color: grey;
+.authgoogle-button {
+    display: block;
+    width: 20rem;
+    height: 3rem;
+    border-radius: 3rem;
+    border-width: 0;
+    background: linear-gradient(#9D9BDF, #6C69C8);
     color: white;
-    cursor: pointer;
+
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "1HoonDdukBokki", serif;
+    font-size: 1.2rem;
 }
