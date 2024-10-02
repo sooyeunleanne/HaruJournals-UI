@@ -36,7 +36,6 @@ body.dark-mode {
 .popup-container {
   position: fixed;
   color: black;
-  width: 50%;
   transform: translate(-50%, -50%); /* Adjust vertically by half of its own height */  
   left: 50%;
   top: 50%;
