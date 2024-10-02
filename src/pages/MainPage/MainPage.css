@@ -177,4 +177,18 @@ input::file-selector-button:hover {
         width: calc(90% - 4rem);
         border-radius: 1.5rem;
     }
+
+    .music-link-textarea {
+        margin-top: 0.25rem;
+    }
+
+    .music-search-button {
+        width: auto;
+    }
+
+    input::file-selector-button {
+        margin-top: 0.25rem;
+        width: auto;
+    }
+    
 }
