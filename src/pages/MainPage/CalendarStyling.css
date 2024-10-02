@@ -285,3 +285,38 @@ abbr {
   width: auto;
   /* position: fixed; */
 }
+
+/* Small devices (phones) */
+@media (max-width: 768px) {
+  .calendar-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 18rem;
+  }
+  
+  .react-calendar {
+    display: block;
+    padding: 1rem;
+    border-radius: 3rem;
+    font-size: 0.5rem;
+    line-height: 20px;
+    text-decoration: none;
+  }
+
+  .react-calendar__navigation button {
+    min-width: 20px;
+    background: none;
+    font-family: "1HoonDdukBokki", serif;
+    font-size: 1.2rem;
+  }
+
+  .react-calendar__navigation__label__labelText--from {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .react-calendar__tile {
+    height: 2rem;
+  }
+}
