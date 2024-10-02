@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import google from '../../assets/icons/google.png';
+
 export default function SignUpComponent( {onCloseClick, onLogInClick} ) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -36,11 +38,12 @@ export default function SignUpComponent( {onCloseClick, onLogInClick} ) {
                 onChange={(e) => setPassword(e.target.value)}
                 className='login-textarea'
                 required></input>
-
-                <button onClick={() => window.open('http://localhost:8000/auth/google')}>
-                    Sign in with Google
-                </button>
-                <button className='connect-to-button' onClick={handleSignup}>Sign Up</button>            
+                
+                <button className='submit-button' onClick={handleSignup}>Sign Up</button>  
+                <button className='authgoogle-button' onClick={() => window.open('http://localhost:8000/auth/google')}>
+                    <img className='google-icon' src={google}/>
+                    <span> Sign up with Google</span>
+                </button>          
             </div>
         </form>
         

@@ -53,7 +53,7 @@ export default function LogInComponent({ onCloseClick, onSignUpClick }) {
                 <button className='submit-button' onClick={handleLogin}>Log In</button>
                 <button className='authgoogle-button' onClick={() => window.location.href = 'http://localhost:8000/auth/google'}>
                     <img className='google-icon' src={google}/>
-                    <span> Sign-in with Google</span>
+                    <span> Sign in with Google</span>
                 </button>
             </div>     
         </div>
