@@ -85,27 +85,27 @@ export const JournalEntryForm = ({ selectedDate, title, onSave, entry, mood, ima
         musicLink: journalMusicLink
       };
   
-      axios.post('http://localhost:8080/api/journals', journal)
-        .then(response => {
-          console.log('Journal saved:', response.data);
-          // Update state or provide feedback to the user here
+      // POST request to save the journal entry
+      axios.post('http://localhost:8000/api/entries', journal)
+      .then(response => {
+        console.log('Journal saved:', response.data);
+
+        // Clear fields and provide feedback
+        setJournalTitle('');
+        setJournalEntry('');
+        setMood('');
+        setJournalImage(null);
+        setJournalMusicLink('');
+
+        // Call the parent onSave function
+        if (typeof onSave === 'function') {
           onSave(selectedDate, journalTitle, journalMood, journalEntry, journalImage, journalMusicLink);
-          setJournalTitle('');
-          setJournalEntry('');
-          setMood('');
-          setJournalImage(null);
-          setJournalMusicLink('');
-        })
-        .catch(error => {
-          console.error('There was an error saving the journal!', error);
-        });
-    } else {
-      if (journalMood === '') {
-        setMoodUnfilled(true);
-      }
-      if (journalEntry === '') {
-        setEntryUnfilled(true);
-      }
+        }
+      })
+      .catch(error => {
+        console.error('There was an error saving the journal!', error);
+        // You could show an error message to the user here
+      });
     }
   };
 
