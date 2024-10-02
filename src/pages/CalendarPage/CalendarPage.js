@@ -20,6 +20,8 @@ function CalendarPage() {
   const [journalMood, setMood] = useState('');
   const [journalEntries, setJournalEntries] = useState({});
   const [darkMode, setDarkMode] = useState(false);
+  const [userName, setUserName] = useState(''); // State for user's name
+
 
   const handleDarkModeChange = (isDarkMode) => {
     setDarkMode(isDarkMode);
@@ -52,6 +54,15 @@ function CalendarPage() {
       .catch(error => {
         console.error('There was an error fetching the journal entries!', error);
       });
+
+      // Fetch user data (make sure to adjust the URL according to your API)
+    axios.get('http://localhost:8000/api/users') // Adjust this endpoint as necessary
+    .then(response => {
+      setUserName(response.data.name); // Adjust based on the actual structure of the response
+    })
+    .catch(error => {
+      console.error('There was an error fetching the user data!', error);
+    });
   }, []);
 
   const handleSaveEntry = useCallback((title, date, mood, entry, imageFile, musicLink) => {
