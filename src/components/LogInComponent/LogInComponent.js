@@ -48,6 +48,9 @@ export default function LogInComponent({ onCloseClick, onSignUpClick }) {
                     className='login-textarea'
                     required
                 />
+                <button className='connect-to-button' onClick={() => window.location.href = 'http://localhost:8000/auth/google'}>
+                    Login with Google
+                </button>
                 <button className='connect-to-button' onClick={handleLogin}>Log In</button>
                 <button className='connect-to-button' onClick={onSignUpClick}>Sign Up</button>       
             </div>     
