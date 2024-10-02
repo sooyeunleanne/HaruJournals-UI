@@ -40,7 +40,6 @@ export default function Header( {onDarkModeChange} ) {
                         </label>
                     </div>
                 }
-                <div className='option'>Account Settings</div>
                 <div className='option'>Logout</div>
             </div>}
             
