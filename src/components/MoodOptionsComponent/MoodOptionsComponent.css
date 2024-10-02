@@ -1,11 +1,8 @@
 .mood-options-bar {
     margin-top: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1rem;
     margin-bottom: 2rem;
-    display: flex;
     border-radius: 2rem;;
-    justify-content: space-evenly;
 }
 
 .light-mode .mood-options-bar {
@@ -55,4 +52,23 @@
 
 .dark-mode .selected {
   outline: 2px solid rgba(255, 255, 130, 0.5);
+}
+
+/* Small devices (phones) */
+@media (max-width: 768px) {
+  .mood-options-bar {
+    border-radius: 1.75rem;
+    padding: 1rem;
+  }
+    .mood-button {
+      height: 3rem;
+      width: 3rem;
+
+      img {
+        height: 2.25em;
+        vertical-align: middle;
+      }
+    }
+
+
 }
