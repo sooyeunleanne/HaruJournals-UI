@@ -43,21 +43,7 @@ body.dark-mode {
   background-color: #F1EFFF;
   padding: 2%;
   z-index: 10;
-}
-
-.close-button {
-  float: right;
-  font-size: large;
-  background-color: transparent;
-  color: black;
-  border-width: 0;
-  font-family: "Karla", sans-serif;
-
-}
-
-.close-button:hover {
-  color: white    ;
-  cursor: pointer;
+  width: 30rem;
 }
 
 .save-button {
@@ -85,4 +71,16 @@ body.dark-mode {
 .save-button:hover {
   border-width: 0.1rem;
   cursor: pointer;
+}
+
+/* Small devices (phones) */
+@media (max-width: 768px) {
+  body {
+    font: 14px;
+  }
+
+  .popup-container {
+    width: 15rem;
+    padding: 1.5rem;
+  }
 }

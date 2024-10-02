@@ -30,32 +30,30 @@ export default function LogInComponent({ onCloseClick, onSignUpClick }) {
 
     return (
         <div className='popup-container'>
-            <div className="login-container">
-                <button className='close-button' onClick={onCloseClick}> X </button>
-                <h1>Log-in</h1>
-                {message && <p className="error-message">{message}</p>}
-                <p>Username</p>
-                <input 
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    className='login-textarea'
-                    required
-                />
-                <p>Password</p>
-                <input 
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className='login-textarea'
-                    required
-                />
-                <button className='submit-button' onClick={handleLogin}>Log In</button>
-                <button className='authgoogle-button' onClick={() => window.location.href = 'http://localhost:8000/auth/google'}>
-                    <img className='google-icon' src={google}/>
-                    <span> Sign in with Google</span>
-                </button>
-            </div>     
+            <button className='close-button' onClick={onCloseClick}> X </button>
+            <h1>Log-in</h1>
+            {message && <p className="error-message">{message}</p>}
+            <p>Username</p>
+            <input 
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className='login-textarea'
+                required
+            />
+            <p>Password</p>
+            <input 
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className='login-textarea'
+                required
+            />
+            <button className='submit-button' onClick={handleLogin}>Log In</button>
+            <button className='authgoogle-button' onClick={() => window.location.href = 'http://localhost:8000/auth/google'}>
+                <img className='google-icon' src={google}/>
+                <span> Sign in with Google</span>
+            </button>
         </div>
     );
 }

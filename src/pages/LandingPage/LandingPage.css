@@ -15,30 +15,38 @@
         position: absolute;
         z-index: -1;
     }
+}
 
-    .heading {
-        display: block;
-        margin-top: 0;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 2.5rem;
-        animation: fadeIn 1s ease-in-out;
-    }
+.heading {
+    display: block;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.5rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+button {
+    display: block;
+    height: 3rem;
+    border-radius: 3rem;
+    border-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "1HoonDdukBokki", serif;
+    font-size: 1.2rem;
 }
 
 .open-button {
     height: 2.5rem;
     border-radius: 3rem;
     border: none;
-    width: 13rem;
+    width: 12.5rem;
+    margin-top: 2rem;
     font-family: "1HoonDdukBokki", serif;
     background: linear-gradient(#9D9BDF, #6C69C8);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    margin: 1rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    font-size: 1.25rem;
-
+    
     animation: fadeIn 2s ease-in-out;
 
 }
@@ -53,15 +61,11 @@
     height: auto;
 }
 
-.login-container {
-    width: 25rem;
-}
-
 .login-textarea {
     height: 1.2rem;
     border-radius: 1rem;
     padding: 1rem;
-    width: 20rem;
+    width: calc(100% - 2.5rem);
     vertical-align: top;
     overflow-y: hidden;
     overflow-wrap: normal; /* Wrap the text at the end of the input field */
@@ -71,37 +75,56 @@
 }
 
 .submit-button {
-    display: block;
-    width: 20rem;
-    height: 3rem;
-    border-radius: 3rem;
-    border-width: 0;
     background: linear-gradient(#9D9BDF, #6C69C8);
     color: white;
-
+    width: 100%;
     margin-top: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: "1HoonDdukBokki", serif;
-    font-size: 1.2rem;
 }
 
 .authgoogle-button {
-    display: block;
-    width: 20rem;
-    height: 3rem;
-    border-radius: 3rem;
-    border-width: 0;
     background: white;
     color: black;
-
+    width: 100%;
     margin-top: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: "1HoonDdukBokki", serif;
-    font-size: 1.2rem;
 }
 
 .google-icon {
     height: 1rem;
 }
+
+.logo-display {
+    width: 25rem;
+}
+
+.close-button {
+    float: right;
+    font-size: large;
+    background-color: transparent;
+    color: black;
+    margin-top: 0;
+    border-width: 0;
+    width: auto;
+    font-family: "Karla", sans-serif;
+
+}
+
+.close-button:hover {
+    color: white    ;
+    cursor: pointer;
+}
+
+
+/* Small devices (phones) */
+@media (max-width: 768px) {
+    .logo-display {
+        width: 15rem;
+    }
+
+    .heading {
+        font-size: 1.8rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+  }

@@ -37,7 +37,7 @@ function LandingPage() {
             {openSignUp && <SignUpComponent onCloseClick={onCloseSignUpClick} onLogInClick={onLogInClick}/>}
 
             <div className='open-screen'>
-                <img style={{height: '15rem'}} src={logo} />
+                <img className='logo-display' src={logo} />
                 <h1 className='heading'>J O U R N A L</h1>
                 <br/>
                 <button className='open-button' onClick={onLogInClick}>Log-in</button>
