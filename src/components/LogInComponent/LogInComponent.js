@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 export default function LogInComponent({ onCloseClick, onSignUpClick }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -16,7 +19,7 @@ export default function LogInComponent({ onCloseClick, onSignUpClick }) {
             if (response.status === 200) {
                 setMessage(response.data.message);
                 // Here you can redirect the user or save the token/user data
-                console.log("User logged in:", response.data.user); // Optional: handle user data as needed
+                navigate('/calendar');
             }
         } catch (error) {
             setMessage(error.response?.data.message || 'Error fetching data');
