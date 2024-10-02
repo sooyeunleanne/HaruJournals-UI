@@ -75,12 +75,13 @@ body.dark-mode {
 
 /* Small devices (phones) */
 @media (max-width: 768px) {
-  body {
-    font: 14px;
-  }
-
   .popup-container {
     width: 15rem;
     padding: 1.5rem;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
   }
 }

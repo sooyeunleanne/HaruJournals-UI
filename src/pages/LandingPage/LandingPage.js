@@ -32,7 +32,6 @@ function LandingPage() {
 
     return (
         <div className='landing-page'>
-            <img className='landing-page background' src={landingPage}></img>
             {openLogIn && <LogInComponent onCloseClick={onCloseLogInClick} onSignUpClick={onSignUpClick}/>}
             {openSignUp && <SignUpComponent onCloseClick={onCloseSignUpClick} onLogInClick={onLogInClick}/>}
 

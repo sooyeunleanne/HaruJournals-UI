@@ -17,6 +17,13 @@
     }
 }
 
+body {
+    font-family: "1HoonDdukBokki", serif;
+    color: black;
+    background-image: url("../../assets/light-mode/background.png");
+  }
+
+
 .heading {
     display: block;
     margin-top: 0;
@@ -127,4 +134,10 @@ button {
     button {
         font-size: 1rem;
     }
+
+    body {
+        font-family: "1HoonDdukBokki", serif;
+        color: black;
+        background-image: url("../../assets/light-mode/mobile-background.png");
+      }
   }
