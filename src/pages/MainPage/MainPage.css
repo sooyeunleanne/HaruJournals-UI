@@ -170,3 +170,11 @@ input::file-selector-button:hover {
     background: linear-gradient(#447199, #03374C);
     color: white;
 }
+
+/* Small devices (phones) */
+@media (max-width: 768px) {
+    .journal-container {
+        width: calc(90% - 4rem);
+        border-radius: 1.5rem;
+    }
+}
