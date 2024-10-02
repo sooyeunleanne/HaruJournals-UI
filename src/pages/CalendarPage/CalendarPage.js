@@ -58,7 +58,7 @@ function CalendarPage() {
     const formattedDate = date.toISOString().split('T')[0];
     const journalEntry = { title, date: formattedDate, mood, entry, image: imageFile, musicLink };
 
-    axios.post('http://localhost:8080/api/journals', journalEntry)
+    axios.post('http://localhost:8000/api/entries', journalEntry)
       .then(response => {
         setJournalEntries(prevEntries => ({
           ...prevEntries,
