@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './MoodOptionsComponent.css';
 
-import sprout from '../../../assets/calendar-icons/sprout.png';
-import halfBloom from '../../../assets/calendar-icons/half-bloom.png';
-import fullBloom from '../../../assets/calendar-icons/full-bloom.png';
-import faded from '../../../assets/calendar-icons/faded.png';
-import bubbly from '../../../assets/calendar-icons/bubbly.png';
+import sprout from '../../assets/calendar-icons/sprout.png';
+import halfBloom from '../../assets/calendar-icons/half-bloom.png';
+import fullBloom from '../../assets/calendar-icons/full-bloom.png';
+import faded from '../../assets/calendar-icons/faded.png';
+import bubbly from '../../assets/calendar-icons/bubbly.png';
 
 export default function MoodOptionsComponent({ setMood, moodInEntry }) {
     const [selectedMood, setSelectedMood] = useState(null);

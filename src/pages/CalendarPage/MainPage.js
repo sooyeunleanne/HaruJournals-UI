@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Calendar } from 'react-calendar';
 import Header from '../../components/Header/Header';
 import AnimatedToolbar from '../../components/AnimatedToolBar/AnimatedToolBar';
-import MoodOptionsComponent from '../../components/JournalEntryForm/MoodOptionsComponent/MoodOptionsComponent';
+import MoodOptionsComponent from '../../components/MoodOptionsComponent/MoodOptionsComponent';
 import './CalendarStyling.css';
 import './MainPage.css';
 
