@@ -15,7 +15,7 @@ import bubbly from '../../assets/calendar-icons/bubbly.png';
 
 import BlinkingImage from '../../components/BlinkingImages/BlinkingImages';
 
-function MainPage() {
+function MainPage({onLogout}) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [darkMode, setDarkMode] = useState(false);
   const [userName, setUserName] = useState('');
@@ -170,7 +170,7 @@ function MainPage() {
 
   return (
     <div id="landing-page">	  
-      <Header onDarkModeChange={handleDarkModeChange} />
+      <Header onDarkModeChange={handleDarkModeChange} onLogout={onLogout} />
       <BlinkingImage />
       <div className='page-container'>
         <div className='calendar-container'>

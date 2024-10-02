@@ -12,11 +12,15 @@ function App() {
     setLoginSuccess(true);
   };
 
+  const handleLogout = () => {
+    setLoginSuccess(false);
+  };
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage onLogin={handleLogin}/>} />
-        {loginSuccess && <Route path="/calendar" element={<MainPage />} />
+        {loginSuccess && <Route path="/calendar" element={<MainPage onLogout={handleLogout} />} />
 }
       </Routes>
     </Router>

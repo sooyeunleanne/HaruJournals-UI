@@ -4,7 +4,7 @@ import './Header.css';
 
 import profile from '../../assets/profile-placeholder.png';
 
-export default function Header( {onDarkModeChange, userName} ) {
+export default function Header( {onDarkModeChange, onLogout} ) {
     const [openSettings, setOpenSettings] = useState(false);
     const [showAppearanceOptions, setShowAppearanceOptions] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
