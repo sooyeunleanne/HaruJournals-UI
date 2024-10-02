@@ -33,7 +33,7 @@ function LandingPage({onLogin}) {
     return (
         <div className='landing-page'>
             {openLogIn && <LogInComponent onCloseClick={onCloseLogInClick} onLogin={onLogin}/>}
-            {openSignUp && <SignUpComponent onCloseClick={onCloseSignUpClick} />}
+            {openSignUp && <SignUpComponent onCloseClick={onCloseSignUpClick} onLogin={onLogin} />}
 
             <div className='open-screen'>
                 <img className='logo-display' src={logo} />

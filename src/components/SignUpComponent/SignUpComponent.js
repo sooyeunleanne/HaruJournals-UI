@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import google from '../../assets/icons/google.png';
 
-export default function SignUpComponent( {onCloseClick, onLogInClick} ) {
+export default function SignUpComponent( {onCloseClick, onLogin} ) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -14,6 +17,9 @@ export default function SignUpComponent( {onCloseClick, onLogInClick} ) {
         try {
             const response = await axios.post('http://localhost:8000/api/users', { username, password });
             setMessage(response.data.message);
+            navigate('/calendar');
+            onLogin();
+            
         } catch (error) {
             setMessage(error.response?.data.message || 'An error occurred');
         }
