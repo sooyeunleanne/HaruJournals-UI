@@ -1,4 +1,5 @@
 import {React, useCallback, useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import './Header.css';
 
 import profile from '../../assets/profile-placeholder.png';
@@ -7,6 +8,8 @@ export default function Header( {onDarkModeChange, userName} ) {
     const [openSettings, setOpenSettings] = useState(false);
     const [showAppearanceOptions, setShowAppearanceOptions] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
+
+    const navigate = useNavigate();
 
     const onProfileIconClick = useCallback(() => {
         setOpenSettings(prevState => !prevState);
@@ -24,6 +27,9 @@ export default function Header( {onDarkModeChange, userName} ) {
         });
     }, [onDarkModeChange]);
 
+    const handleLogout = () => {
+        navigate('/'); // Navigate to login page after logout
+    };
 
     return (
         <div className='header-container'>
@@ -40,7 +46,7 @@ export default function Header( {onDarkModeChange, userName} ) {
                         </label>
                     </div>
                 }
-                <div className='option'>Logout</div>
+                <div className='option' onClick={handleLogout}>Logout</div>
             </div>}
             
         </div>
