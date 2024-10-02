@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage';
 import MainPage from './pages/MainPage';
 
@@ -16,16 +16,27 @@ function App() {
     setLoginSuccess(false);
   };
 
+  const PrivateRoute = ({ children, loginSuccess }) => {
+    return loginSuccess ? children : <Navigate to="/" />;
+  };
+  
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage onLogin={handleLogin}/>} />
-        {loginSuccess && <Route path="/calendar" element={<MainPage onLogout={handleLogout} />} />
-}
-      </Routes>
-    </Router>
-  );
-}
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage onLogin={handleLogin} />} />
+          <Route
+            path="/calendar"
+            element={
+              <PrivateRoute loginSuccess={loginSuccess}>
+                <MainPage onLogout={handleLogout} />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    );
+  }
 
 export default App;
 
