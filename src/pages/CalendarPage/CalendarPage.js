@@ -40,7 +40,7 @@ function CalendarPage() {
 
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/journals')
+    axios.get('http://localhost:8000/api/entries')
       .then(response => {
         const entries = response.data.reduce((acc, entry) => {
           const date = new Date(entry.date).toISOString().split('T')[0];
