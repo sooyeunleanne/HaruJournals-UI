@@ -54,9 +54,6 @@ function MainPage() {
           return acc;
         }, {});
         setJournalEntries(entries);
-
-        const userResponse = await axios.get('http://localhost:8000/api/users');
-        setUserName(userResponse.data.name);
       } catch (error) {
         console.error('There was an error fetching data!', error);
       }
