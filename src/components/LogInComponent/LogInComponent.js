@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import google from '../../assets/icons/google.png';
 
-export default function LogInComponent({ onCloseClick, onSignUpClick }) {
+export default function LogInComponent({ onCloseClick, onLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -22,6 +22,7 @@ export default function LogInComponent({ onCloseClick, onSignUpClick }) {
                 setMessage(response.data.message);
                 // Here you can redirect the user or save the token/user data
                 navigate('/calendar');
+                onLogin();
             }
         } catch (error) {
             setMessage(error.response?.data.message || 'Error fetching data');

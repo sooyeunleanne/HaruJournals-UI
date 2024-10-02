@@ -7,7 +7,7 @@ import SignUpComponent from '../../components/SignUpComponent/SignUpComponent';
 import landingPage from '../../assets/landing page.png';
 import logo from '../../assets/logo.png'
 
-function LandingPage() {
+function LandingPage({onLogin}) {
     const [openLogIn, setOpenLogIn] = useState(false);
 
     const onLogInClick = useCallback(() => {
@@ -32,8 +32,8 @@ function LandingPage() {
 
     return (
         <div className='landing-page'>
-            {openLogIn && <LogInComponent onCloseClick={onCloseLogInClick} onSignUpClick={onSignUpClick}/>}
-            {openSignUp && <SignUpComponent onCloseClick={onCloseSignUpClick} onLogInClick={onLogInClick}/>}
+            {openLogIn && <LogInComponent onCloseClick={onCloseLogInClick} onLogin={onLogin}/>}
+            {openSignUp && <SignUpComponent onCloseClick={onCloseSignUpClick} />}
 
             <div className='open-screen'>
                 <img className='logo-display' src={logo} />
